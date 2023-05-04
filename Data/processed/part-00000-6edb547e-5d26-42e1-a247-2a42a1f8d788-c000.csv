@@ -1,3 +1,4 @@
+Customer,Recence,Frequence,Monetary,recence_score,frequence_score,monetary_score,RFM_SCORE,segment
 VISHA DEVAN,41,766,692446.0,1.0,3.0,3.0,133,Champions
 MULBERRIES BOUTIQUE,39,3756,3649692.0,1.0,3.0,3.0,133,Champions
 DANESHWARY RAMAR,4,281,218710.0,0.0,3.0,3.0,033,Champions
