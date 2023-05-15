@@ -1,2 +1,9 @@
 Data/input/
 Data/output/
+*.aux
+*.fdb_latexmk
+*.gz
+*.pdf
+*.out
+*.log
+*.fls
