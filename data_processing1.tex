@@ -389,7 +389,7 @@
 
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{1}{\boxspacing}
+\prompt{In}{incolor}{2}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{}\PYZpc{}pip install plotly}
 \PY{c+c1}{\PYZsh{}\PYZpc{}pip install squarify}
@@ -398,7 +398,7 @@
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{2}{\boxspacing}
+\prompt{In}{incolor}{3}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{from} \PY{n+nn}{pyspark}\PY{n+nn}{.}\PY{n+nn}{sql} \PY{k+kn}{import} \PY{n}{SparkSession}
 \PY{k+kn}{from} \PY{n+nn}{pyspark}\PY{n+nn}{.}\PY{n+nn}{ml}\PY{n+nn}{.}\PY{n+nn}{feature} \PY{k+kn}{import} \PY{n}{VectorAssembler}\PY{p}{,} \PY{n}{OneHotEncoder}\PY{p}{,}\PY{n}{StringIndexer}\PY{p}{,} \PY{n}{Bucketizer}
@@ -420,7 +420,7 @@
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{3}{\boxspacing}
+\prompt{In}{incolor}{4}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{}creating the session and the Sparkcontext for RDD manipulation}
 \PY{n}{spark} \PY{o}{=} \PY{n}{SparkSession}\PY{o}{.}\PY{n}{builder}\PY{o}{.}\PY{n}{appName}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{CRM Analysis}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{getOrCreate}\PY{p}{(}\PY{p}{)}
@@ -435,7 +435,7 @@ setLogLevel(newLevel).
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{4}{\boxspacing}
+\prompt{In}{incolor}{5}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} Recuperation des donnees }
 \PY{n}{salesData} \PY{o}{=} \PY{n}{sc}\PY{o}{.}\PY{n}{textFile}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{./Data/input/International\PYZus{}sale\PYZus{}Report.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
@@ -443,7 +443,7 @@ setLogLevel(newLevel).
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{5}{\boxspacing}
+\prompt{In}{incolor}{6}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} Lire la premiere ligne qui represente l\PYZsq{}entete}
 \PY{n}{salesHeader} \PY{o}{=} \PY{n}{salesData}\PY{o}{.}\PY{n}{first}\PY{p}{(}\PY{p}{)}
@@ -457,7 +457,7 @@ setLogLevel(newLevel).
     \end{Verbatim}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{5}{\boxspacing}
+\prompt{Out}{outcolor}{6}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 ['index',
  'DATE',
@@ -473,7 +473,7 @@ setLogLevel(newLevel).
 \end{tcolorbox}
         
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{6}{\boxspacing}
+\prompt{In}{incolor}{7}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{}remove header from the rdd}
 \PY{n}{salesData} \PY{o}{=} \PY{n}{sc}\PY{o}{.}\PY{n}{parallelize}\PY{p}{(}\PY{n}{salesData}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{)}
@@ -482,19 +482,15 @@ setLogLevel(newLevel).
 \end{Verbatim}
 \end{tcolorbox}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-    \end{Verbatim}
-
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{6}{\boxspacing}
+\prompt{Out}{outcolor}{7}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 ('number of lines :', 37432)
 \end{Verbatim}
 \end{tcolorbox}
         
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{7}{\boxspacing}
+\prompt{In}{incolor}{8}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} Il faut que les donnees soit de type tuple et non pas list, car on aura besoin de les hasher apres}
 \PY{n}{salesData} \PY{o}{=} \PY{n}{salesData}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n+nb}{str}\PY{p}{:} \PY{n+nb}{tuple}\PY{p}{(}\PY{n+nb}{str}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
@@ -513,7 +509,7 @@ setLogLevel(newLevel).
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{8}{\boxspacing}
+\prompt{In}{incolor}{9}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{}regex pour detecter les dates, format : jj\PYZhy{}MM\PYZhy{}yy}
 \PY{n}{dateRe} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZca{}[0\PYZhy{}9]}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{1,2\PYZcb{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{\PYZhy{}[0\PYZhy{}9]}\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{1,2\PYZcb{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{\PYZhy{}[0\PYZhy{}9]}\PY{l+s+si}{\PYZob{}2\PYZcb{}}\PY{l+s+s2}{\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
@@ -535,7 +531,7 @@ setLogLevel(newLevel).
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{9}{\boxspacing}
+\prompt{In}{incolor}{10}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{skuData} \PY{o}{=} \PY{n}{uncleanData}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:} \PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{==}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{and} \PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{!=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \PY{c+c1}{\PYZsh{}.map(lambda elt: [elt[0],elt[1]])}
@@ -545,7 +541,7 @@ setLogLevel(newLevel).
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{9}{\boxspacing}
+\prompt{Out}{outcolor}{10}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 [('18635', 'SKU', '', '', '', '', '', '', '', ''),
  ('18636', 'JNE3826', '', '', '', '', '', '', '', '')]
@@ -563,7 +559,7 @@ setLogLevel(newLevel).
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{10}{\boxspacing}
+\prompt{In}{incolor}{11}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{StyleAndStock}\PY{o}{=} \PY{n}{uncleanData}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:} \PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{!=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{and} \PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]} \PY{o}{==}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}} \PY{p}{)}
 \PY{c+c1}{\PYZsh{}.map(lambda elt: [elt[0],elt[1],elt[2]])}
@@ -572,7 +568,7 @@ setLogLevel(newLevel).
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{10}{\boxspacing}
+\prompt{Out}{outcolor}{11}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 [('18660', 'Style', 'Stock', '', '', '', '', '', '', ''),
  ('18661', 'MEN5004', '43.00', '', '', '', '', '', '', '')]
@@ -589,39 +585,40 @@ setLogLevel(newLevel).
   avoir les donnes avec les colonne swapees.
 \item
   Apres on remet l'ordre correct des colonnes en les sauvgardant dans un
-  nouveau RDD \texttt{cleanData2}
+  nouveau RDD \texttt{tempCleanData}
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{11}{\boxspacing}
+\prompt{In}{incolor}{12}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{rest} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{salesData}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{cleanData}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{StyleAndStock}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{skuData}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{)}
-\PY{n}{rest} \PY{o}{=} \PY{n}{sc}\PY{o}{.}\PY{n}{parallelize}\PY{p}{(}\PY{n}{rest}\PY{p}{)}
-\PY{n}{rest}\PY{o}{.}\PY{n}{take}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{c+c1}{\PYZsh{} Remove the clean data and the unclean data from the dataset, the rest of these are swapped data}
+\PY{n}{swappedData} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{salesData}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{cleanData}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{StyleAndStock}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{skuData}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\PY{n}{swappedData} \PY{o}{=} \PY{n}{sc}\PY{o}{.}\PY{n}{parallelize}\PY{p}{(}\PY{n}{swappedData}\PY{p}{)}
+\PY{n}{swappedData}\PY{o}{.}\PY{n}{take}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{11}{\boxspacing}
+\prompt{Out}{outcolor}{12}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-[('29255',
-  'MRS. SUMITHA RAJU',
-  '02-23-22',
-  'Feb-22',
-  'J0344',
-  'J0344-TP-XL',
+[('20522',
+  'COTTON CLOSET LTD',
+  '07-09-21',
+  'Jul-21',
+  'SET164',
+  'SET164-KR-NP-XS',
   '1.00',
-  '425.00',
-  '416.00',
-  '266.00')]
+  '638.89',
+  '581.00',
+  '0.00')]
 \end{Verbatim}
 \end{tcolorbox}
         
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{12}{\boxspacing}
+\prompt{In}{incolor}{13}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{}swap between two columns 1 \PYZlt{}\PYZhy{}\PYZgt{} 2 then 2 \PYZlt{}\PYZhy{}\PYZgt{} 3 so that it matches the clean data schema}
-\PY{n}{cleanData2} \PY{o}{=} \PY{n}{rest}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:}  \PY{p}{[}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,}\PY{k+kc}{None}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+\PY{n}{tempCleanData} \PY{o}{=} \PY{n}{swappedData}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:}  \PY{p}{[}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,}\PY{k+kc}{None}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
@@ -646,7 +643,7 @@ setLogLevel(newLevel).
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{13}{\boxspacing}
+\prompt{In}{incolor}{14}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k}{def} \PY{n+nf}{fixSize}\PY{p}{(}\PY{n}{elt}\PY{p}{)}\PY{p}{:}
     \PY{k}{if}\PY{p}{(}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]} \PY{o}{==} \PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
@@ -655,24 +652,24 @@ setLogLevel(newLevel).
     \PY{k}{return} \PY{n}{elt}
 
 
-\PY{n}{cleanData2} \PY{o}{=} \PY{n}{cleanData2}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:} \PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{o}{!=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\PY{n}{cleanData2}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{fixSize}\PY{p}{)}\PY{o}{.}\PY{n}{take}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{tempCleanData} \PY{o}{=} \PY{n}{tempCleanData}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:} \PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{o}{!=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{tempCleanData}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{fixSize}\PY{p}{)}\PY{o}{.}\PY{n}{take}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{13}{\boxspacing}
+\prompt{Out}{outcolor}{14}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-[['29255',
-  '02-23-22',
-  'Feb-22',
-  'MRS. SUMITHA RAJU',
-  'J0344',
-  'J0344-TP-XL',
-  'XL',
+[['20522',
+  '07-09-21',
+  'Jul-21',
+  'COTTON CLOSET LTD',
+  'SET164',
+  'SET164-KR-NP-XS',
+  'XS',
   '1.00',
-  '425.00',
-  '416.00']]
+  '638.89',
+  '581.00']]
 \end{Verbatim}
 \end{tcolorbox}
         
@@ -683,203 +680,446 @@ setLogLevel(newLevel).
 \tightlist
 \item
   Environs 1400 ligne de donnees n'a pa de SKU et c'est un facteur
-  important, donc on dois enlever ces ligne pour ne pas avoir des
-  resultats fausses
+  important, donc on doit les ignorees apres pour ne pas avoir des
+  resultat faussee
 \end{itemize}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{14}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{cleanData} \PY{o}{=} \PY{n}{cleanData}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:} \PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{o}{!=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\PY{n}{cleanData}\PY{o}{.}\PY{n}{take}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{14}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-[('0',
-  '06-05-21',
-  'Jun-21',
-  'REVATHY LOGANATHAN',
-  'MEN5004',
-  'MEN5004-KR-L',
-  'L',
-  '1.00',
-  '616.56',
-  '617.00')]
-\end{Verbatim}
-\end{tcolorbox}
-        
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{15}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{p}{\PYZob{}}
-    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Donnees propres}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{n}{cleanData}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{n}{cleanData2}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{,} 
-    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Donnees non propres}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{StyleAndStock}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{n}{skuData}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
-\PY{p}{\PYZcb{}}
+\PY{c+c1}{\PYZsh{}replace the data with the missing SKU to empty and notIndicated}
+\PY{n}{cleanData} \PY{o}{=} \PY{n}{cleanData}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:} \PY{p}{(}\PY{o}{*}\PY{n}{elt}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{empty}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{notIndicated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{o}{*}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{:}\PY{p}{]}\PY{p}{)} \PY{k}{if} \PY{p}{(}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{o}{==}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{else} \PY{n}{elt}\PY{p}{)}
+\PY{n}{cleanData}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
 \prompt{Out}{outcolor}{15}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\{'Donnees propres': 34958, 'Donnees non propres': 1039\}
+18635
 \end{Verbatim}
 \end{tcolorbox}
         
+    \begin{itemize}
+\tightlist
+\item
+  Il y a une duplication de l'entete a l'interieur du dataset
+  -\textgreater{} en l'enleve
+\end{itemize}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{16}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Donnees initial:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+si}{\PYZob{}}\PY{n}{salesData}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ lignes}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Donnees utillisable apres nettoyage:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}
-\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{cleanData}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{n}{cleanData2}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{lignes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{tempCleanData} \PY{o}{=} \PY{n}{tempCleanData}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:} \PY{n+nb}{list}\PY{p}{(}\PY{n}{elt}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt} \PY{p}{:} \PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{!=} \PY{n}{salesHeader}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-Donnees initial:        37432 lignes
-Donnees utillisable apres nettoyage:    34958lignes
-    \end{Verbatim}
-
-    \hypertarget{sauvgarde-des-donnees}{%
-\section{Sauvgarde des donnees}\label{sauvgarde-des-donnees}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{17}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{df} \PY{o}{=} \PY{n}{spark}\PY{o}{.}\PY{n}{createDataFrame}\PY{p}{(}\PY{n}{cleanData}\PY{o}{.}\PY{n}{union}\PY{p}{(}\PY{n}{cleanData2}\PY{p}{)}\PY{p}{,}\PY{n}{schema}\PY{o}{=}\PY{n}{salesHeader}\PY{p}{)}
-\PY{n}{df}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}
+\PY{n}{finalCleanRdd} \PY{o}{=} \PY{n}{cleanData}\PY{o}{.}\PY{n}{union}\PY{p}{(}\PY{n}{tempCleanData}\PY{p}{)}
+\PY{c+c1}{\PYZsh{}transformer les elt prix et qte en float}
+\PY{n}{finalCleanRdd} \PY{o}{=} \PY{n}{finalCleanRdd}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:} \PY{p}{(}\PY{o}{*}\PY{n}{elt}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{7}\PY{p}{]}\PY{p}{,}\PY{n+nb}{float}\PY{p}{(}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{n+nb}{float}\PY{p}{(}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{)}\PY{p}{,}\PY{n+nb}{float}\PY{p}{(}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-+-----+--------+------+------------------+-------+--------------+----+----+-----
--+---------+
-|index|    DATE|Months|          CUSTOMER|  Style|           SKU|Size| PCS|
-RATE|GROSS AMT|
-+-----+--------+------+------------------+-------+--------------+----+----+-----
--+---------+
-|    0|06-05-21|Jun-21|REVATHY LOGANATHAN|MEN5004|  MEN5004-KR-L|
-L|1.00|616.56|   617.00|
-|    1|06-05-21|Jun-21|REVATHY LOGANATHAN|MEN5004| MEN5004-KR-XL|
-XL|1.00|616.56|   617.00|
-|    2|06-05-21|Jun-21|REVATHY LOGANATHAN|MEN5004|MEN5004-KR-XXL|
-XXL|1.00|616.56|   617.00|
-|    3|06-05-21|Jun-21|REVATHY LOGANATHAN|MEN5009|  MEN5009-KR-L|
-L|1.00|616.56|   617.00|
-|    4|06-05-21|Jun-21|REVATHY LOGANATHAN|MEN5011|  MEN5011-KR-L|
-L|1.00|616.56|   617.00|
-+-----+--------+------+------------------+-------+--------------+----+----+-----
--+---------+
-only showing top 5 rows
-
-    \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{18}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{c+c1}{\PYZsh{} Ecrire le donnees dans le disque}
-\PY{c+c1}{\PYZsh{}df.write.mode(\PYZsq{}overwrite\PYZsq{}).csv(\PYZdq{}./Data/output/\PYZdq{},header = True)}
+\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Donnees initial}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{salesData}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Donnees non propres}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{StyleAndStock}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{n}{skuData}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Donnees propres}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{finalCleanRdd}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{,} 
+\PY{p}{\PYZcb{}} \PY{p}{,}\PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Valeur}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{T}
 \end{Verbatim}
 \end{tcolorbox}
 
-    \hypertarget{cross-selling-analysis}{%
-\section{Cross-selling analysis}\label{cross-selling-analysis}}
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+    \end{Verbatim}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{18}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+                     Valeur
+Donnees initial       37432
+Donnees non propres    1039
+Donnees propres       36374
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \hypertarget{sauvgarde-des-donnees}{%
+\section{Sauvgarde des donnees}\label{sauvgarde-des-donnees}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{19}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{readData}\PY{p}{(}\PY{n}{path}\PY{p}{)} \PY{p}{:}
-    \PY{c+c1}{\PYZsh{}defining a schema for the data }
-    \PY{n}{schema} \PY{o}{=} \PY{n}{StructType}\PY{p}{(}\PY{p}{[}
-        \PY{n}{StructField}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{index}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{IntegerType}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
-        \PY{n}{StructField}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{StringType}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
-        \PY{n}{StructField}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Months}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{StringType}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
-        \PY{n}{StructField}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{CUSTOMER}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{StringType}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
-        \PY{n}{StructField}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{StringType}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
-        \PY{n}{StructField}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKU}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{StringType}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
-        \PY{n}{StructField}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Size}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{StringType}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
-        \PY{n}{StructField}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PCS}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{DoubleType}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
-        \PY{n}{StructField}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{RATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{DoubleType}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}\PY{p}{,}
-        \PY{n}{StructField}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{GROSS AMT}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{DoubleType}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{k+kc}{False}\PY{p}{)}
-    \PY{p}{]}\PY{p}{)}
-
-    \PY{c+c1}{\PYZsh{} Load data}
-    \PY{n}{data} \PY{o}{=} \PY{n}{spark}\PY{o}{.}\PY{n}{read}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PYZbs{}
-        \PY{o}{.}\PY{n}{option}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{header}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{k+kc}{True}\PY{p}{)}\PYZbs{}
-        \PY{o}{.}\PY{n}{option}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{nullValue}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PYZbs{}
-        \PY{o}{.}\PY{n}{schema}\PY{p}{(}\PY{n}{schema}\PY{p}{)}\PYZbs{}
-        \PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n}{path}\PY{p}{)}
-    
-    \PY{c+c1}{\PYZsh{}dropping null data}
-    \PY{n}{data} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{na}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{p}{)}
-    \PY{k}{return} \PY{n}{data}
+\PY{n}{finalDf} \PY{o}{=} \PY{n}{spark}\PY{o}{.}\PY{n}{createDataFrame}\PY{p}{(}\PY{n}{finalCleanRdd}\PY{p}{,}\PY{n}{schema}\PY{o}{=}\PY{n}{salesHeader}\PY{p}{)}
+\PY{n}{finalDf}\PY{o}{.}\PY{n}{printSchema}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
-    Pour les algorithmes de Data mining il est conseille de travailler avec
-des donnes numerique et non pas avec des chaine de charactere, et donc
-pour chaque element important de type string on va l'indexer pour
-obtenir un valeur numerique utilisable par la suite
+    \begin{Verbatim}[commandchars=\\\{\}]
+root
+ |-- index: string (nullable = true)
+ |-- DATE: string (nullable = true)
+ |-- Months: string (nullable = true)
+ |-- CUSTOMER: string (nullable = true)
+ |-- Style: string (nullable = true)
+ |-- SKU: string (nullable = true)
+ |-- Size: string (nullable = true)
+ |-- PCS: double (nullable = true)
+ |-- RATE: double (nullable = true)
+ |-- GROSS AMT: double (nullable = true)
+
+    \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{20}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{indexData}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:}
-    \PY{c+c1}{\PYZsh{} Creating indexers for string}
-    \PY{n}{styleIndexer} \PY{o}{=} \PY{n}{StringIndexer}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{StyleIndex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{handleInvalid} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{error}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-    \PY{n}{skuIndexer} \PY{o}{=} \PY{n}{StringIndexer}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKU}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKUIndex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}  \PY{n}{handleInvalid} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{error}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-    \PY{n}{sizeIndexer} \PY{o}{=} \PY{n}{StringIndexer}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Size}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SizeIndex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}  \PY{n}{handleInvalid} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{error}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-    \PY{c+c1}{\PYZsh{} Fits the model}
-    \PY{n}{data} \PY{o}{=} \PY{n}{styleIndexer}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
-    \PY{n}{data} \PY{o}{=} \PY{n}{skuIndexer}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
-    \PY{n}{data} \PY{o}{=} \PY{n}{sizeIndexer}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
-    \PY{k}{return} \PY{n}{data}
+\PY{c+c1}{\PYZsh{} Ecrire le donnees dans le disque}
+\PY{c+c1}{\PYZsh{} finalDf.write.mode(\PYZsq{}overwrite\PYZsq{}).csv(\PYZdq{}./Data/output/\PYZdq{},header = True)}
 \end{Verbatim}
 \end{tcolorbox}
+
+    \hypertarget{data-understanding}{%
+\section{Data Understanding}\label{data-understanding}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{21}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{encodeData}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:}
-    \PY{c+c1}{\PYZsh{} One\PYZhy{}hot encode categorical features}
-    \PY{n}{style\PYZus{}encoder} \PY{o}{=} \PY{n}{OneHotEncoder}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{StyleIndex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{StyleVec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-    \PY{n}{sku\PYZus{}encoder} \PY{o}{=} \PY{n}{OneHotEncoder}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKUIndex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKUVec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-    \PY{n}{size\PYZus{}encoder} \PY{o}{=} \PY{n}{OneHotEncoder}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SizeIndex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SizeVec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-    \PY{n}{data} \PY{o}{=} \PY{n}{style\PYZus{}encoder}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
-    \PY{n}{data} \PY{o}{=} \PY{n}{sku\PYZus{}encoder}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
-    \PY{n}{data} \PY{o}{=} \PY{n}{size\PYZus{}encoder}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+\PY{n}{pandasDF} \PY{o}{=} \PY{n}{finalDf}\PY{o}{.}\PY{n}{toPandas}\PY{p}{(}\PY{p}{)}
+\PY{n}{pandasDF}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{pandasDF}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n+nb}{format}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{22}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k+kn}{import} \PY{n}{display}
+\PY{k}{def} \PY{n+nf}{check\PYZus{}data}\PY{p}{(}\PY{n}{dataframe}\PY{p}{,} \PY{n}{head}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{:}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ SHAPE }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{center}\PY{p}{(}\PY{l+m+mi}{70}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Rows: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{dataframe}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Columns: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{dataframe}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ TYPES }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{center}\PY{p}{(}\PY{l+m+mi}{70}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+    \PY{c+c1}{\PYZsh{} show types in a table format}
+    \PY{n}{display}\PY{p}{(}\PY{n}{pandasDF}\PY{o}{.}\PY{n}{dtypes}\PY{o}{.}\PY{n}{to\PYZus{}frame}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{rename}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+m+mi}{0}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dtype}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ HEAD }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{center}\PY{p}{(}\PY{l+m+mi}{70}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+    \PY{n}{display}\PY{p}{(}\PY{n}{dataframe}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{n}{head}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ TAIL }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{center}\PY{p}{(}\PY{l+m+mi}{70}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+    \PY{n}{display}\PY{p}{(}\PY{n}{dataframe}\PY{o}{.}\PY{n}{tail}\PY{p}{(}\PY{n}{head}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ MISSING VALUES }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{center}\PY{p}{(}\PY{l+m+mi}{70}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+    \PY{n}{display}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{dataframe}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ DUPLICATED VALUES }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{center}\PY{p}{(}\PY{l+m+mi}{70}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+    \PY{n}{display}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{n}{dataframe}\PY{o}{.}\PY{n}{duplicated}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{p}{\PYZcb{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ QUANTILES }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{center}\PY{p}{(}\PY{l+m+mi}{70}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+    \PY{n}{display}\PY{p}{(}\PY{n}{dataframe}\PY{o}{.}\PY{n}{quantile}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.05}\PY{p}{,} \PY{l+m+mf}{0.50}\PY{p}{,} \PY{l+m+mf}{0.95}\PY{p}{,} \PY{l+m+mf}{0.99}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{T}\PY{p}{)}
+
+
+\PY{n}{check\PYZus{}data}\PY{p}{(}\PY{n}{pandasDF}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+------------------------------- SHAPE --------------------------------
+Rows: 36374
+Columns: 10
+------------------------------- TYPES --------------------------------
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+                    dtype
+index              object
+DATE       datetime64[ns]
+Months             object
+CUSTOMER           object
+Style              object
+SKU                object
+Size               object
+PCS               float64
+RATE              float64
+GROSS AMT         float64
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+-------------------------------- HEAD --------------------------------
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+  index       DATE  Months            CUSTOMER    Style             SKU Size  \textbackslash{}
+0     0 2021-06-05  Jun-21  REVATHY LOGANATHAN  MEN5004    MEN5004-KR-L    L   
+1     1 2021-06-05  Jun-21  REVATHY LOGANATHAN  MEN5004   MEN5004-KR-XL   XL   
+2     2 2021-06-05  Jun-21  REVATHY LOGANATHAN  MEN5004  MEN5004-KR-XXL  XXL   
+3     3 2021-06-05  Jun-21  REVATHY LOGANATHAN  MEN5009    MEN5009-KR-L    L   
+4     4 2021-06-05  Jun-21  REVATHY LOGANATHAN  MEN5011    MEN5011-KR-L    L   
+
+   PCS    RATE  GROSS AMT  
+0  1.0  616.56      617.0  
+1  1.0  616.56      617.0  
+2  1.0  616.56      617.0  
+3  1.0  616.56      617.0  
+4  1.0  616.56      617.0  
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+-------------------------------- TAIL --------------------------------
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+       index       DATE  Months                   CUSTOMER    Style  \textbackslash{}
+36369  26902 2021-12-06  Dec-21      PUNITHAVATHY KARUPIAH   SET243   
+36370  27641 2022-01-17  Jan-22        KAVEENAZ COLLECTION  JNE3744   
+36371  25523 2021-10-20  Oct-21                TANUJ UPPAL    J0153   
+36372  25892 2021-10-29  Oct-21        DEEPARATI MUKHERJEE    J0278   
+36373  29041 2022-02-22  Feb-22  ETHNIC WEAVES FASHION LLC    J0201   
+
+                  SKU  Size  PCS    RATE  GROSS AMT  
+36369  SET243-KR-PP-M  None  1.0  698.00      698.0  
+36370  JNE3744-TU-XXL  None  1.0  562.50      562.0  
+36371      J0153-DR-S  None  1.0  585.00      562.0  
+36372     J0278-SET-L  None  1.0  977.78      948.0  
+36373    J0201-TP-XXL  None  1.0  562.50      534.0  
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+--------------------------- MISSING VALUES ---------------------------
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+           Count
+index          0
+DATE           0
+Months         0
+CUSTOMER       0
+Style          0
+SKU            0
+Size       17739
+PCS            0
+RATE           0
+GROSS AMT      0
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+------------------------- DUPLICATED VALUES --------------------------
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+   Count
+0      0
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+----------------------------- QUANTILES ------------------------------
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/tmp/ipykernel\_18896/4117720775.py:18: FutureWarning: The default value of
+numeric\_only in DataFrame.quantile is deprecated. In a future version, it will
+default to False. Select only valid columns or specify the value of numeric\_only
+to silence this warning.
+  display(dataframe.quantile([0, 0.05, 0.50, 0.95, 0.99, 1]).T)
+    \end{Verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+            0.00   0.05    0.50    0.95    0.99     1.00
+PCS          1.0    1.0    1.00     3.0     6.0   1000.0
+RATE         2.0  359.0  598.75  1387.5  3000.0  57400.0
+GROSS AMT  100.0  368.0  667.00  2160.0  4483.0  57400.0
+    \end{Verbatim}
+
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{23}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{desc\PYZus{}stats}\PY{p}{(}\PY{n}{dataframe}\PY{p}{)}\PY{p}{:}
+    \PY{n}{desc\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{index}\PY{o}{=}\PY{n}{dataframe}\PY{o}{.}\PY{n}{columns}\PY{p}{,}
+                           \PY{n}{columns}\PY{o}{=}\PY{n}{dataframe}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{T}\PY{o}{.}\PY{n}{columns}\PY{p}{,}
+                           \PY{n}{data}\PY{o}{=}\PY{n}{dataframe}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{T}\PY{p}{)}
+
+    \PY{n}{f}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}
+                                  \PY{n}{desc\PYZus{}df}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{*} \PY{l+m+mf}{0.81}\PY{p}{)}\PY{p}{)}
+    \PY{n}{sns}\PY{o}{.}\PY{n}{heatmap}\PY{p}{(}\PY{n}{desc\PYZus{}df}\PY{p}{,}
+                \PY{n}{annot}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,}
+                \PY{n}{cmap}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Greens}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                \PY{n}{fmt}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{.2f}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                \PY{n}{ax}\PY{o}{=}\PY{n}{ax}\PY{p}{,}
+                \PY{n}{linecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{white}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                \PY{n}{linewidths}\PY{o}{=}\PY{l+m+mf}{1.1}\PY{p}{,}
+                \PY{n}{cbar}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,}
+                \PY{n}{annot\PYZus{}kws}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{size}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+m+mi}{12}\PY{p}{\PYZcb{}}
+            \PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{18}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{,}
+               \PY{n}{rotation}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Descriptive Statistics}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+    \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+
+
+\PY{n}{desc\PYZus{}stats}\PY{p}{(}\PY{n}{pandasDF}\PY{o}{.}\PY{n}{select\PYZus{}dtypes}\PY{p}{(}\PY{n}{include}\PY{o}{=}\PY{p}{[}\PY{n+nb}{float}\PY{p}{,} \PY{n+nb}{int}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{data_processing1_files/data_processing1_30_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{24}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{replace\PYZus{}with\PYZus{}thresholds}\PY{p}{(}\PY{n}{dataframe}\PY{p}{,} \PY{n}{variable}\PY{p}{,} \PY{n}{q1}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{,} \PY{n}{q3}\PY{o}{=}\PY{l+m+mf}{0.75}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}}
+\PY{l+s+sd}{    Detects outliers with IQR method and replaces with thresholds }
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    \PYZsq{}\PYZsq{}\PYZsq{}}
+
+    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{dataframe}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+    \PY{n}{quartile1} \PY{o}{=} \PY{n}{df\PYZus{}}\PY{p}{[}\PY{n}{variable}\PY{p}{]}\PY{o}{.}\PY{n}{quantile}\PY{p}{(}\PY{n}{q1}\PY{p}{)}
+    \PY{n}{quartile3} \PY{o}{=} \PY{n}{df\PYZus{}}\PY{p}{[}\PY{n}{variable}\PY{p}{]}\PY{o}{.}\PY{n}{quantile}\PY{p}{(}\PY{n}{q3}\PY{p}{)}
+    \PY{n}{iqr} \PY{o}{=} \PY{n}{quartile3} \PY{o}{\PYZhy{}} \PY{n}{quartile1}
+
+    \PY{n}{up\PYZus{}limit} \PY{o}{=} \PY{n}{quartile3} \PY{o}{+} \PY{l+m+mf}{1.5} \PY{o}{*} \PY{n}{iqr}
+    \PY{n}{low\PYZus{}limit} \PY{o}{=} \PY{n}{quartile1} \PY{o}{\PYZhy{}} \PY{l+m+mf}{1.5} \PY{o}{*} \PY{n}{iqr}
+    \PY{c+c1}{\PYZsh{} si la valeur de la variable est inférieure à la limite inférieure, elle est remplacée par cette limite inférieure.}
+    \PY{n}{df\PYZus{}}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{(}\PY{n}{df\PYZus{}}\PY{p}{[}\PY{n}{variable}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{low\PYZus{}limit}\PY{p}{)}\PY{p}{,} \PY{n}{variable}\PY{p}{]} \PY{o}{=} \PY{n}{low\PYZus{}limit}
+    \PY{c+c1}{\PYZsh{} si la valeur de la variable est supérieure à la limite supérieure, elle est remplacée par cette limite supérieure.}
+    \PY{n}{df\PYZus{}}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{(}\PY{n}{df\PYZus{}}\PY{p}{[}\PY{n}{variable}\PY{p}{]} \PY{o}{\PYZgt{}} \PY{n}{up\PYZus{}limit}\PY{p}{)}\PY{p}{,} \PY{n}{variable}\PY{p}{]} \PY{o}{=} \PY{n}{up\PYZus{}limit}
+
+    \PY{k}{return} \PY{n}{df\PYZus{}}
+
+\PY{c+c1}{\PYZsh{}Ce code effectue plusieurs étapes de nettoyage et de prétraitement des données}
+\PY{k}{def} \PY{n+nf}{ecommerce\PYZus{}preprocess}\PY{p}{(}\PY{n}{dataframe}\PY{p}{)}\PY{p}{:}
+    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{dataframe}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+
+    \PY{c+c1}{\PYZsh{}Missing Values}
+    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{df\PYZus{}}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
+
+    \PY{c+c1}{\PYZsh{}supprimer les commandes annulées et la quantité = 0}
+    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{df\PYZus{}}\PY{p}{[}\PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{PCS}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{]}
+
+    \PY{c+c1}{\PYZsh{}Remplacement des valeurs aberrantes}
+    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{replace\PYZus{}with\PYZus{}thresholds}\PY{p}{(}\PY{n}{df\PYZus{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PCS}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{q1}\PY{o}{=}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{n}{q3}\PY{o}{=}\PY{l+m+mf}{0.99}\PY{p}{)}
+    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{replace\PYZus{}with\PYZus{}thresholds}\PY{p}{(}\PY{n}{df\PYZus{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{RATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{q1}\PY{o}{=}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{n}{q3}\PY{o}{=}\PY{l+m+mf}{0.99}\PY{p}{)}
+
+    \PY{c+c1}{\PYZsh{}Total Price}
+    \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{TotalPrice}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PCS}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{*} \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{RATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+
+    \PY{k}{return} \PY{n}{df\PYZus{}}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{25}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{df} \PY{o}{=} \PY{n}{ecommerce\PYZus{}preprocess}\PY{p}{(}\PY{n}{pandasDF}\PY{p}{)}
+
+\PY{n}{desc\PYZus{}stats}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{select\PYZus{}dtypes}\PY{p}{(}\PY{n}{include}\PY{o}{=}\PY{p}{[}\PY{n+nb}{float}\PY{p}{,} \PY{n+nb}{int}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{data_processing1_files/data_processing1_32_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{cross-selling-analysis}{%
+\section{Cross-selling analysis}\label{cross-selling-analysis}}
+
+    Pour les algorithmes de Data mining il est conseille de travailler avec
+des donnes numerique et non pas avec des chaine de charactere, et donc
+pour chaque element important de type string on va l'indexer pour
+obtenir un valeur numerique utilisable par la suite.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{26}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{indexData}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Cette fonction prend une donnée `data` de type DataFrame en entrée et applique les transformations StringIndexer aux colonnes }
+\PY{l+s+sd}{    \PYZdq{}Style\PYZdq{}, \PYZdq{}SKU\PYZdq{} et \PYZdq{}Size\PYZdq{}. `StringIndexer` est utilisé pour convertir des colonnes de chaînes catégorielles en indices numériques. Le DataFrame transformé est renvoyé. \PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{c+c1}{\PYZsh{} Creating indexers for string}
+    \PY{n}{styleIndexer} \PY{o}{=} \PY{n}{StringIndexer}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{StyleIndex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{handleInvalid} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{skip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{skuIndexer} \PY{o}{=} \PY{n}{StringIndexer}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKU}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKUIndex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}  \PY{n}{handleInvalid} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{skip}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{c+c1}{\PYZsh{} sizeIndexer = StringIndexer(inputCol=\PYZdq{}Size\PYZdq{},outputCol=\PYZdq{}SizeIndex\PYZdq{},  handleInvalid = \PYZdq{}skip\PYZdq{})}
+    \PY{c+c1}{\PYZsh{} Fits the model}
+    \PY{n}{data} \PY{o}{=} \PY{n}{styleIndexer}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+    \PY{n}{data} \PY{o}{=} \PY{n}{skuIndexer}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+    \PY{c+c1}{\PYZsh{} data = sizeIndexer.fit(data).transform(data)}
     \PY{k}{return} \PY{n}{data}
 \end{Verbatim}
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{22}{\boxspacing}
+\prompt{In}{incolor}{27}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{encodeData}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Cette fonction prend la sortie DataFrame de `indexData` comme entrée et applique les transformations `OneHotEncoder` aux colonnes }
+\PY{l+s+sd}{    \PYZdq{}StyleIndex\PYZdq{}, \PYZdq{}SKUIndex\PYZdq{} et \PYZdq{}SizeIndex\PYZdq{}. `OneHotEncoder` est utilisé pour convertir les indices numériques en vecteurs binaires clairsemés,}
+\PY{l+s+sd}{    où chaque vecteur représente la présence ou l\PYZsq{}absence d\PYZsq{}une catégorie spécifique. Le DataFrame transformé est renvoyé. \PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{c+c1}{\PYZsh{} One\PYZhy{}hot encode categorical features}
+    \PY{n}{style\PYZus{}encoder} \PY{o}{=} \PY{n}{OneHotEncoder}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{StyleIndex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{StyleVec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{sku\PYZus{}encoder} \PY{o}{=} \PY{n}{OneHotEncoder}\PY{p}{(}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKUIndex}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKUVec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{c+c1}{\PYZsh{} size\PYZus{}encoder = OneHotEncoder(inputCol=\PYZdq{}SizeIndex\PYZdq{}, outputCol=\PYZdq{}SizeVec\PYZdq{})}
+    \PY{n}{data} \PY{o}{=} \PY{n}{style\PYZus{}encoder}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+    \PY{n}{data} \PY{o}{=} \PY{n}{sku\PYZus{}encoder}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+    \PY{c+c1}{\PYZsh{} data = size\PYZus{}encoder.fit(data).transform(data)}
+    \PY{k}{return} \PY{n}{data}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{28}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k}{def} \PY{n+nf}{assembleData}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Cette fonction prend la sortie DataFrame de `encodeData` comme entrée et crée un VectorAssembler. }
+\PY{l+s+sd}{    Le VectorAssembler combine plusieurs colonnes d\PYZsq{}entrée, y compris les vecteurs encodés à chaud, }
+\PY{l+s+sd}{    en une seule colonne de vecteurs de caractéristiques nommée « caractéristiques ». Le DataFrame transformé avec }
+\PY{l+s+sd}{    la colonne \PYZdq{}features\PYZdq{} supplémentaire est renvoyé. \PYZdq{}\PYZdq{}\PYZdq{}}
     \PY{c+c1}{\PYZsh{} Create vector assembler}
-    \PY{n}{assembler} \PY{o}{=} \PY{n}{VectorAssembler}\PY{p}{(}\PY{n}{inputCols}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{StyleVec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKUVec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SizeVec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PCS}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{RATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{GROSS AMT}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{features}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{assembler} \PY{o}{=} \PY{n}{VectorAssembler}\PY{p}{(}\PY{n}{inputCols}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{StyleVec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKUVec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PCS}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{RATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{GROSS AMT}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{features}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
     \PY{n}{data\PYZus{}with\PYZus{}features} \PY{o}{=} \PY{n}{assembler}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{data}\PY{p}{)}
     \PY{k}{return} \PY{n}{data\PYZus{}with\PYZus{}features}
 \end{Verbatim}
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{23}{\boxspacing}
+\prompt{In}{incolor}{29}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{dataPaths} \PY{o}{=} \PY{n}{glob}\PY{o}{.}\PY{n}{glob}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{./Data/output/*.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{c+c1}{\PYZsh{} dataPaths = glob.glob(\PYZsq{}./Data/output/*.csv\PYZsq{})}
 \PY{c+c1}{\PYZsh{} Read Data}
-\PY{n}{data} \PY{o}{=} \PY{n}{readData}\PY{p}{(}\PY{n}{dataPaths}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\PY{c+c1}{\PYZsh{} data = readData(finalDf)}
 \PY{c+c1}{\PYZsh{} Index string values}
-\PY{n}{indexedData} \PY{o}{=} \PY{n}{indexData}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+\PY{n}{indexedData} \PY{o}{=} \PY{n}{indexData}\PY{p}{(}\PY{n}{finalDf}\PY{p}{)}
 \PY{c+c1}{\PYZsh{} One\PYZhy{}hot encode categorical features }
 \PY{n}{encodedData} \PY{o}{=} \PY{n}{encodeData}\PY{p}{(}\PY{n}{indexedData}\PY{p}{)}
 \PY{c+c1}{\PYZsh{}  Create vector assembler}
 \PY{n}{data\PYZus{}with\PYZus{}features} \PY{o}{=} \PY{n}{assembleData}\PY{p}{(}\PY{n}{encodedData}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
 
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{30}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} Cluster the data to identify potential cross\PYZhy{}selling and upselling opportunities}
-\PY{n}{kmeans} \PY{o}{=} \PY{n}{KMeans}\PY{p}{(}\PY{n}{k}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{seed}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{kmeans} \PY{o}{=} \PY{n}{KMeans}\PY{p}{(}\PY{n}{k}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{seed}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
 \PY{n}{model} \PY{o}{=} \PY{n}{kmeans}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{data\PYZus{}with\PYZus{}features}\PY{o}{.}\PY{n}{select}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{features}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
 
 \PY{c+c1}{\PYZsh{} Predict the cluster labels for each data point}
@@ -887,91 +1127,136 @@ obtenir un valeur numerique utilisable par la suite
 
 \PY{c+c1}{\PYZsh{} Show the predicted clusters for each SKU and Style combination}
 \PY{n}{predictions}\PY{o}{.}\PY{n}{groupBy}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKU}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prediction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prediction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\PY{n}{predictions}\PY{o}{.}\PY{n}{printSchema}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}]
+[Stage 61:===========================================>              (6 + 2) / 8]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
++--------+------------------+----------+-----+
+|   Style|               SKU|prediction|count|
++--------+------------------+----------+-----+
+|   J0306|             empty|        99|    1|
+| JNE3710|             empty|        99|    1|
+|  SET187|             empty|        99|    1|
+| JNE3797|             empty|        99|    1|
+|  SET405|             empty|        99|    1|
+|PJNE3373|             empty|        99|    1|
+|  SET186|             empty|        99|    1|
+| JNE3621|      JNE3621-KR-L|        99|    2|
+|   J0158|       J0158-DR-XL|        99|    2|
+|  SET044| SET044-KR-NP-XXXL|        99|    2|
+|   J0016|        J0016-DR-S|        99|    2|
+|   J0158|        J0158-DR-L|        99|    2|
+|   J0174|        J0174-TP-M|        99|    2|
+| JNE2270|JNE2270-KR-487-XXL|        99|    2|
+|   J0214|      J0214-TP-XXL|        99|    2|
+|   J0144|       J0144-SET-M|        99|    2|
+|  SET243|    SET243-KR-PP-L|        99|    2|
+|   J0138|       J0138-KR-XS|        99|    2|
+| JNE3609|    JNE3609-KR-XXL|        99|    2|
+|  SET130| SET130-KR-NP-XXXL|        99|    2|
++--------+------------------+----------+-----+
+only showing top 20 rows
+
+root
+ |-- index: string (nullable = true)
+ |-- DATE: string (nullable = true)
+ |-- Months: string (nullable = true)
+ |-- CUSTOMER: string (nullable = true)
+ |-- Style: string (nullable = true)
+ |-- SKU: string (nullable = true)
+ |-- Size: string (nullable = true)
+ |-- PCS: double (nullable = true)
+ |-- RATE: double (nullable = true)
+ |-- GROSS AMT: double (nullable = true)
+ |-- StyleIndex: double (nullable = false)
+ |-- SKUIndex: double (nullable = false)
+ |-- StyleVec: vector (nullable = true)
+ |-- SKUVec: vector (nullable = true)
+ |-- features: vector (nullable = true)
+ |-- prediction: integer (nullable = false)
 
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-+--------+-----------------+----------+-----+
-|   Style|              SKU|prediction|count|
-+--------+-----------------+----------+-----+
-|  SET389|   SET389-KR-NP-M|         9|    1|
-|   J0278|   J0278-SET-XXXL|         9|    1|
-|   J0034|    J0034-SET-XXL|         9|    1|
-|  SET055|   SET055-KR-NP-L|         9|    1|
-|   J0279|     J0279-SET-XL|         9|    1|
-|   J0037|     J0037-KR-XXL|         9|    1|
-|  SET249|   SET249-KR-NP-S|         9|    1|
-|   J0134|      J0134-SET-S|         9|    1|
-|  SET389|  SET389-KR-NP-XL|         9|    1|
-|   J0333|     J0333-DR-XXL|         9|    1|
-|   NW005|    NW005-ST-PJ-L|         9|    1|
-|  SET303|   SET303-KR-NP-S|         9|    1|
-|   J0093|      J0093-DR-XL|         9|    1|
-|   J0148|      J0148-SET-M|         9|    1|
-|  SET182|SET182-KR-DH-XXXL|         9|    1|
-|  SET223|   SET223-KR-NP-M|         9|    1|
-|   J0006|      J0006-SET-S|         9|    1|
-|   J0187|      J0187-KR-XS|         9|    1|
-|  SET389|SET389-KR-NP-XXXL|         9|    1|
-|PJNE2270|  PJNE2270-KR-4XL|         9|    1|
-+--------+-----------------+----------+-----+
-only showing top 20 rows
 
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{24}{\boxspacing}
+\prompt{In}{incolor}{31}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{predictions} \PY{o}{=} \PY{n}{predictions}\PY{o}{.}\PY{n}{groupBy}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKU}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prediction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prediction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
-\PY{n+nb}{type}\PY{p}{(}\PY{n}{predictions}\PY{p}{)}
+\PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\PY{k+kn}{from} \PY{n+nn}{pyspark}\PY{n+nn}{.}\PY{n+nn}{ml}\PY{n+nn}{.}\PY{n+nn}{evaluation} \PY{k+kn}{import} \PY{n}{ClusteringEvaluator}
+\PY{k+kn}{from} \PY{n+nn}{pyspark}\PY{n+nn}{.}\PY{n+nn}{sql}\PY{n+nn}{.}\PY{n+nn}{functions} \PY{k+kn}{import} \PY{n}{col}\PY{p}{,} \PY{n}{udf}
+\PY{k+kn}{from} \PY{n+nn}{pyspark}\PY{n+nn}{.}\PY{n+nn}{sql}\PY{n+nn}{.}\PY{n+nn}{types} \PY{k+kn}{import} \PY{n}{ArrayType}\PY{p}{,} \PY{n}{DoubleType}
+
+\PY{c+c1}{\PYZsh{} Calculate inertia}
+\PY{n}{inertia} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{summary}\PY{o}{.}\PY{n}{trainingCost}
+
+\PY{c+c1}{\PYZsh{} Calculate silhouette score}
+\PY{n}{evaluator} \PY{o}{=} \PY{n}{ClusteringEvaluator}\PY{p}{(}\PY{p}{)}
+\PY{n}{silhouette\PYZus{}score} \PY{o}{=} \PY{n}{evaluator}\PY{o}{.}\PY{n}{evaluate}\PY{p}{(}\PY{n}{predictions}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} Print the evaluation metrics}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Inertia: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{inertia}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Silhouette Score: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{silhouette\PYZus{}score}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{24}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-pyspark.sql.dataframe.DataFrame
-\end{Verbatim}
-\end{tcolorbox}
-        
+    \begin{Verbatim}[commandchars=\\\{\}]
+[Stage 66:=============================>                            (4 + 4) / 8]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Inertia:  72435432.7257687
+Silhouette Score:  0.6675652174682912
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+    \end{Verbatim}
+
     \hypertarget{affichage-des-resultats}{%
 \subsection{Affichage des resultats}\label{affichage-des-resultats}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{25}{\boxspacing}
+\prompt{In}{incolor}{32}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{predictions\PYZus{}pd} \PY{o}{=} \PY{n}{predictions}\PY{o}{.}\PY{n}{toPandas}\PY{p}{(}\PY{p}{)}
-\PY{n}{fig} \PY{o}{=} \PY{n}{px}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n}{predictions\PYZus{}pd}\PY{p}{,}\PY{n}{x}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{prediction}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{y}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{groupedPredictions} \PY{o}{=} \PY{n}{predictions}\PY{o}{.}\PY{n}{groupBy}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKU}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prediction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prediction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\PY{n}{groupedPredictions\PYZus{}pd} \PY{o}{=} \PY{n}{groupedPredictions}\PY{o}{.}\PY{n}{toPandas}\PY{p}{(}\PY{p}{)}
+\PY{n}{fig} \PY{o}{=} \PY{n}{px}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n}{groupedPredictions\PYZus{}pd}\PY{p}{,}\PY{n}{x}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{prediction}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{y}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \PY{n}{fig}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+    \end{Verbatim}
 
     
     
     
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{26}{\boxspacing}
+\prompt{In}{incolor}{33}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} Convert predictions dataframe to Pandas dataframe}
-\PY{n}{predictions\PYZus{}pd} \PY{o}{=} \PY{n}{predictions}\PY{o}{.}\PY{n}{select}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKU}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prediction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{limit}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}\PY{o}{.}\PY{n}{toPandas}\PY{p}{(}\PY{p}{)}
+\PY{n}{predictions\PYZus{}pd} \PY{o}{=} \PY{n}{predictions}\PY{o}{.}\PY{n}{select}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKU}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prediction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{limit}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}\PY{o}{.}\PY{n}{toPandas}\PY{p}{(}\PY{p}{)}
 
 \PY{c+c1}{\PYZsh{} Create scatter plot}
 \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{predictions\PYZus{}pd}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKU}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{predictions\PYZus{}pd}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{n}{predictions\PYZus{}pd}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{prediction}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{SKU}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-
-
 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{data_processing1_files/data_processing1_35_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{data_processing1_files/data_processing1_43_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -979,265 +1264,127 @@ pyspark.sql.dataframe.DataFrame
 \section{RFM Analysis}\label{rfm-analysis}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{27}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{files} \PY{o}{=} \PY{n}{glob}\PY{o}{.}\PY{n}{glob}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{./Data/output/*.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\PY{n}{rfmRdd} \PY{o}{=} \PY{n}{sc}\PY{o}{.}\PY{n}{parallelize}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
-\PY{c+c1}{\PYZsh{}reading the data from the source files:}
-\PY{k}{for} \PY{n}{f} \PY{o+ow}{in} \PY{n}{files}\PY{p}{:}
-    \PY{c+c1}{\PYZsh{}removing the header before hand}
-    \PY{n}{rdd} \PY{o}{=} \PY{n}{sc}\PY{o}{.}\PY{n}{parallelize}\PY{p}{(}\PY{n}{sc}\PY{o}{.}\PY{n}{textFile}\PY{p}{(}\PY{n}{f}\PY{p}{)}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{)}
-    \PY{c+c1}{\PYZsh{}adding the rdd to the uniting}
-    \PY{n}{rfmRdd} \PY{o}{=} \PY{n}{rfmRdd}\PY{o}{.}\PY{n}{union}\PY{p}{(}\PY{n}{rdd}\PY{p}{)}
-
-
-\PY{c+c1}{\PYZsh{}splting the lines so we can deal with them}
-\PY{n}{rfmRdd} \PY{o}{=} \PY{n}{rfmRdd}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:} \PY{n}{elt}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
-
-\PY{c+c1}{\PYZsh{}filtering data that dont have a date}
-\PY{n}{dateReg} \PY{o}{=} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{[00\PYZhy{}12]\PYZhy{}[00\PYZhy{}31]\PYZhy{}[00\PYZhy{}99]}\PY{l+s+s1}{\PYZsq{}}
-\PY{n}{dateReg} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{n}{dateRe}\PY{p}{)}
-\PY{n}{rfmRdd} \PY{o}{=} \PY{n}{rfmRdd}\PY{o}{.}\PY{n}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt} \PY{p}{:} \PY{n}{dateRe}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{28}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{stringToDate}\PY{p}{(}\PY{n}{elt}\PY{p}{)}\PY{p}{:}
-    \PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{strptime}\PY{p}{(}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-    \PY{k}{return} \PY{n}{elt}
-\PY{n}{rfmRdd} \PY{o}{=} \PY{n}{rfmRdd}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{stringToDate}\PY{p}{)}
-\PY{n}{maxDate} \PY{o}{=} \PY{n}{rfmRdd}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{l} \PY{p}{:} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}
-\PY{c+c1}{\PYZsh{}maxDate = datetime.strftime(maxDate,\PYZsq{}\PYZpc{}m\PYZhy{}\PYZpc{}d\PYZhy{}\PYZpc{}y\PYZsq{})}
-\PY{n}{maxDate}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-    \end{Verbatim}
-
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{28}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-datetime.datetime(2022, 3, 31, 0, 0)
-\end{Verbatim}
-\end{tcolorbox}
-        
-    On prend un jour proche du max pour avoir des resultats raisonable
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{29}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{c+c1}{\PYZsh{} Om simule qu\PYZsq{}on fait les analyses le jours apres la derniere transactions}
-\PY{n}{today} \PY{o}{=} \PY{n}{datetime}\PY{p}{(}\PY{l+m+mi}{2022}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
-\PY{n}{rowsRdd} \PY{o}{=} \PY{n}{rfmRdd}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{l}\PY{p}{:} \PY{n}{Row}\PY{p}{(}
-    \PY{n}{index} \PY{o}{=} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
-    \PY{n}{date} \PY{o}{=} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}
-    \PY{n}{customer} \PY{o}{=} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}
-    \PY{n}{totalPrice} \PY{o}{=} \PY{n+nb}{float}\PY{p}{(}\PY{n}{l}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]}\PY{p}{)}
-\PY{p}{)}\PY{p}{)}
-\PY{n}{groupedRdd} \PY{o}{=} \PY{n}{rowsRdd}\PY{o}{.}\PY{n}{groupBy}\PY{p}{(}\PY{k}{lambda} \PY{n}{row}\PY{p}{:} \PY{n}{row}\PY{o}{.}\PY{n}{customer}\PY{p}{)}\PYZbs{}
-    \PY{o}{.}\PY{n}{mapValues}\PY{p}{(}\PY{k}{lambda} \PY{n}{rows}\PY{p}{:} \PY{p}{(}
-        \PY{p}{(}\PY{n}{today} \PY{o}{\PYZhy{}} \PY{n+nb}{max}\PY{p}{(}\PY{p}{[}\PY{n}{row}\PY{o}{.}\PY{n}{date} \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{rows}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{days}\PY{p}{,}
-        \PY{n+nb}{len}\PY{p}{(}\PY{n+nb}{set}\PY{p}{(}\PY{n}{row}\PY{o}{.}\PY{n}{index} \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{rows}\PY{p}{)}\PY{p}{)}\PY{p}{,}
-        \PY{n+nb}{sum}\PY{p}{(}\PY{n}{row}\PY{o}{.}\PY{n}{totalPrice} \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{rows}\PY{p}{)}
-    \PY{p}{)}\PY{p}{)}
-\PY{c+c1}{\PYZsh{} les elements sont groupe par client  }
-\PY{n}{groupedRdd}\PY{o}{.}\PY{n}{take}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-    \end{Verbatim}
-
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{29}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-[('VISHA DEVAN', (41, 766, 692446.0)),
- ('KALAIVANI PERMALU', (98, 636, 379736.0))]
-\end{Verbatim}
-\end{tcolorbox}
-        
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{30}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{c+c1}{\PYZsh{} creation d\PYZsq{}un data frame apartir des donnees groupee}
-\PY{n}{rfm} \PY{o}{=} \PY{n}{groupedRdd}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{elt}\PY{p}{:} \PY{p}{(}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{n}{elt}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PYZbs{}
-    \PY{o}{.}\PY{n}{toDF}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Customer}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Recence}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Frequence}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Monetary}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
-\PY{n}{rfm}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-+--------------------+-------+---------+---------+
-|            Customer|Recence|Frequence| Monetary|
-+--------------------+-------+---------+---------+
-|         VISHA DEVAN|     41|      766| 692446.0|
-|   KALAIVANI PERMALU|     98|      636| 379736.0|
-|        BISSY SKARIA|     66|       78|  55192.0|
-|             AANCHOL|    259|        9|  26065.0|
-|    PUVANES GANNASIN|    165|      129|  89770.0|
-| MULBERRIES BOUTIQUE|     39|     3756|3649692.0|
-|   NIRUSAH TAILORING|    178|      726| 692640.0|
-|    DANESHWARY RAMAR|      4|      281| 218710.0|
-|       RINA THAKURTA|     36|      296| 412188.0|
-|          MR.JEYARAJ|      6|      277| 177550.0|
-|     ABBI COLLECTION|     55|      142|  83628.0|
-| MRS DEVIANEE BALLAH|    162|      158| 132692.0|
-|  MANISH DHOORUNDHUR|    198|       41|  30264.0|
-|              SINDHU|     46|      223| 204020.0|
-|PUNITHAVATHY KARU{\ldots}|     35|      284| 270416.0|
-|     YASSHLINY KUNJU|     29|      243| 196044.0|
-| RISHIKESH DASHPUTRE|    247|       29|  22814.0|
-|     MR ALWAR MURALI|    240|       23|  14846.0|
-| DEEPARATI MUKHERJEE|    154|      146| 177052.0|
-|   VAHARSHA BOUTIQUE|     48|     1445|1290440.0|
-+--------------------+-------+---------+---------+
-only showing top 20 rows
-
-    \end{Verbatim}
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{31}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{getRfmScore}\PY{p}{(}\PY{n}{dataframe}\PY{p}{)}\PY{p}{:}
-    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{dataframe}
-    \PY{c+c1}{\PYZsh{} Calculating the quantiles}
-    \PY{n}{recencySplits} \PY{o}{=} \PY{p}{(}\PY{n}{df\PYZus{}}\PY{o}{.}\PY{n}{approxQuantile}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Recence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,}\PY{l+m+mf}{0.25}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{0.75}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{)}\PY{p}{)}
-    \PY{n}{frequencySplit} \PY{o}{=} \PY{p}{(}\PY{n}{df\PYZus{}}\PY{o}{.}\PY{n}{approxQuantile}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,}\PY{l+m+mf}{0.25}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{0.75}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{)}\PY{p}{)}
-    \PY{n}{monetarySplit} \PY{o}{=} \PY{n}{df\PYZus{}}\PY{o}{.}\PY{n}{approxQuantile}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Monetary}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,}\PY{l+m+mf}{0.25}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{0.75}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{)}
-    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{RFM splits:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{p}{\PYZob{}}
-        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{recency}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{recencySplits}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{frequency}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{frequencySplit}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{monetary}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{monetarySplit}
-    \PY{p}{\PYZcb{}}\PY{p}{)}
-    \PY{c+c1}{\PYZsh{}segmenting the values accordingly}
-    \PY{n}{recencyBucket} \PY{o}{=} \PY{n}{Bucketizer}\PY{p}{(}\PY{n}{splits}\PY{o}{=}\PY{p}{(}\PY{n}{recencySplits}\PY{p}{)}\PY{p}{,}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Recence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{recence\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-    \PY{n}{frequencyBucket} \PY{o}{=} \PY{n}{Bucketizer}\PY{p}{(}\PY{n}{splits}\PY{o}{=}\PY{n}{frequencySplit}\PY{p}{,}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{frequence\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-    \PY{n}{monetaryBucket} \PY{o}{=} \PY{n}{Bucketizer}\PY{p}{(}\PY{n}{splits}\PY{o}{=}\PY{n}{monetarySplit}\PY{p}{,}\PY{n}{inputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Monetary}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{outputCol}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{monetary\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{recencyBucket}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{df\PYZus{}}\PY{p}{)}
-    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{frequencyBucket}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{df\PYZus{}}\PY{p}{)}
-    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{monetaryBucket}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{df\PYZus{}}\PY{p}{)}
-    \PY{c+c1}{\PYZsh{} create the rfm score which is the concatenation of the 3 values R, F, M}
-    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{df\PYZus{}}\PY{o}{.}\PY{n}{withColumn}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{RFM\PYZus{}SCORE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{concat\PYZus{}ws}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{recence\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cast}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{int}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{cast}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{string}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}
-                                                 \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{frequence\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cast}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{int}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{cast}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{string}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}
-                                                 \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{monetary\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cast}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{int}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{cast}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{string}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-                                                \PY{p}{)}
-                        \PY{p}{)}
-
-    \PY{k}{return} \PY{n}{df\PYZus{}}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{32}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{rfmScores} \PY{o}{=} \PY{n}{getRfmScore}\PY{p}{(}\PY{n}{rfm}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-RFM splits: \{'recency': [1.0, 29.0, 78.0, 175.0, 297.0], 'frequency': [9.0,
-46.0, 129.0, 277.0, 3756.0], 'monetary': [12916.0, 40536.0, 97131.0, 204020.0,
-3649692.0]\}
-    \end{Verbatim}
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{33}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{rfmScores}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-+-----------------+-------+---------+--------+-------------+---------------+----
-----------+---------+
-|         Customer|Recence|Frequence|Monetary|recence\_score|frequence\_score|mone
-tary\_score|RFM\_SCORE|
-+-----------------+-------+---------+--------+-------------+---------------+----
-----------+---------+
-|      VISHA DEVAN|     41|      766|692446.0|          1.0|            3.0|
-3.0|      133|
-|KALAIVANI PERMALU|     98|      636|379736.0|          2.0|            3.0|
-3.0|      233|
-|     BISSY SKARIA|     66|       78| 55192.0|          1.0|            1.0|
-1.0|      111|
-|          AANCHOL|    259|        9| 26065.0|          3.0|            0.0|
-0.0|      300|
-| PUVANES GANNASIN|    165|      129| 89770.0|          2.0|            2.0|
-1.0|      221|
-+-----------------+-------+---------+--------+-------------+---------------+----
-----------+---------+
-only showing top 5 rows
-
-    \end{Verbatim}
-
-    \hypertarget{segmentation}{%
-\subsection{Segmentation}\label{segmentation}}
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{34}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{matchSegment}\PY{p}{(}\PY{n}{value}\PY{p}{,} \PY{n}{segMap}\PY{p}{)}\PY{p}{:}
-    \PY{k}{for} \PY{n}{pattern} \PY{o+ow}{in} \PY{n}{segMap}\PY{p}{:}
-        \PY{n}{regex} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{compile}\PY{p}{(}\PY{n}{pattern}\PY{p}{)}
-        \PY{k}{if} \PY{n}{regex}\PY{o}{.}\PY{n}{match}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{:}
-            \PY{k}{return} \PY{n}{segMap}\PY{p}{[}\PY{n}{pattern}\PY{p}{]}
-    \PY{k}{return} \PY{n}{value}
-
-\PY{c+c1}{\PYZsh{} Define the segment map}
-\PY{n}{segMap} \PY{o}{=} \PY{p}{\PYZob{}}
-    \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZca{}[0\PYZhy{}1][3\PYZhy{}4][3\PYZhy{}4]\PYZdl{}}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Champions}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-    \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZca{}[0\PYZhy{}4][3\PYZhy{}4][0\PYZhy{}4]\PYZdl{}}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Loyal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-    \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZca{}[0\PYZhy{}2]2[0\PYZhy{}4]\PYZdl{}}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Prometteur}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-    \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZca{}[0\PYZhy{}1][0\PYZhy{}2]}\PY{l+s+si}{\PYZob{}2\PYZcb{}}\PY{l+s+s1}{\PYZdl{}}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Rookie}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-    \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZca{}[2\PYZhy{}3][0\PYZhy{}2][3\PYZhy{}4]\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{High value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-    \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZca{}[3\PYZhy{}4][0\PYZhy{}2][0\PYZhy{}4]\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Dormant}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-    \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZca{}[0\PYZhy{}4][0\PYZhy{}1][0\PYZhy{}2]\PYZdl{}}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{En risque}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-\PY{p}{\PYZcb{}}
-
-\PY{c+c1}{\PYZsh{} Create a UDF to replace the values based on the segment map dictionary}
-\PY{n}{udf\PYZus{}replace} \PY{o}{=} \PY{n}{F}\PY{o}{.}\PY{n}{udf}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{matchSegment}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{segMap}\PY{p}{)}\PY{p}{)}
-
-\PY{c+c1}{\PYZsh{} Apply the UDF to the RFM\PYZus{}SCORE column and create a new column called \PYZsq{}segment\PYZsq{}}
-\PY{n}{rfmMap} \PY{o}{=} \PY{n}{rfmScores}\PY{o}{.}\PY{n}{withColumn}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{udf\PYZus{}replace}\PY{p}{(}\PY{n}{F}\PY{o}{.}\PY{n}{col}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{RFM\PYZus{}SCORE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{43}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{rfmMap}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{segment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{write}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{overwrite}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Data/processed/}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{header} \PY{o}{=} \PY{k+kc}{True}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{pandasDF}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DATE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-
+2022-05-11 00:00:00
     \end{Verbatim}
 
-    \hypertarget{segmentation-map-visualisation}{%
-\subsubsection{Segmentation Map
-visualisation}\label{segmentation-map-visualisation}}
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{35}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{datetime} \PY{k}{as} \PY{n+nn}{dt}
+\PY{c+c1}{\PYZsh{}on prend le date la plus recente possible}
+\PY{n}{today\PYZus{}date} \PY{o}{=} \PY{n}{dt}\PY{o}{.}\PY{n}{datetime}\PY{p}{(}\PY{l+m+mi}{2022}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{)}
 
+\PY{n}{rfm} \PY{o}{=} \PY{n}{pandasDF}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CUSTOMER}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{agg}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DATE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{p}{(}\PY{n}{today\PYZus{}date} \PY{o}{\PYZhy{}} \PY{n}{x}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{days}\PY{p}{,}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{index}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{nunique}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{GROSS AMT}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{n}{rfm}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{recency}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{frequency}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{monetary}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{c+c1}{\PYZsh{} filter the \PYZsq{}monetary\PYZsq{} column using boolean condition}
+\PY{n}{rfm} \PY{o}{=} \PY{n}{rfm}\PY{p}{[}\PY{n}{rfm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{monetary}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{]}
+\PY{n}{rfm} \PY{o}{=} \PY{n}{rfm}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{rfm}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{35}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+                           CUSTOMER  recency  frequency   monetary
+0                           AANCHOL      303          9   26065.00
+1                  ABBI COLLECTION        99        142   83628.00
+2           ABDUL RAHMAN(SINGAPORE)      150        196  114272.00
+3  ADDVEN SOLUTIONS PRIVATE LIMITED      207         94   72456.00
+4               AJS INDIAN BOUTIQUE       27         10    8368.75
+\end{Verbatim}
+\end{tcolorbox}
+        
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{36}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{c+c1}{\PYZsh{} Transformer en pandas DF pour visualiser les donnees}
-\PY{n}{pandasRfmDf} \PY{o}{=} \PY{n}{rfmMap}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{segment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{toPandas}\PY{p}{(}\PY{p}{)}
+\PY{k}{def} \PY{n+nf}{get\PYZus{}rfm\PYZus{}scores}\PY{p}{(}\PY{n}{dataframe}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n}{pd}\PY{o}{.}\PY{n}{core}\PY{o}{.}\PY{n}{frame}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{:}
 
-\PY{n}{segments} \PY{o}{=} \PY{n}{pandasRfmDf}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{segment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{ascending} \PY{o}{=} \PY{k+kc}{False}\PY{p}{)}
+    \PY{n}{df\PYZus{}} \PY{o}{=} \PY{n}{dataframe}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+    \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{recency\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{qcut}\PY{p}{(}\PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{recency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+    \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{frequency\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{qcut}\PY{p}{(}
+        \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{frequency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{rank}\PY{p}{(}\PY{n}{method}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{first}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}
+    \PY{p}{)}
+    \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{monetary\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{qcut}\PY{p}{(}\PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{monetary}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{n}{labels}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}
+    \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{RFM\PYZus{}SCORE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{recency\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{str}\PY{p}{)} \PY{o}{+} \PY{n}{df\PYZus{}}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{frequency\PYZus{}score}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{str}\PY{p}{)}
 
+    \PY{k}{return} \PY{n}{df\PYZus{}}
+
+
+\PY{n}{rfm} \PY{o}{=} \PY{n}{get\PYZus{}rfm\PYZus{}scores}\PY{p}{(}\PY{n}{rfm}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/home/latif/.local/lib/python3.10/site-
+packages/pandas/core/arrays/categorical.py:555: RuntimeWarning:
+
+invalid value encountered in cast
+
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{37}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{seg\PYZus{}map} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{[1\PYZhy{}2][1\PYZhy{}2]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{en hibernation}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+           \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{[1\PYZhy{}2][3\PYZhy{}4]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{en risque}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+           \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{[1\PYZhy{}2]5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ne peut pas perdre}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+           \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3[1\PYZhy{}2]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{prsq dormant}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+           \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{33}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{besoin d}\PY{l+s+se}{\PYZbs{}\PYZsq{}}\PY{l+s+s1}{attention}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+           \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{[3\PYZhy{}4][4\PYZhy{}5]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{clients fidèles}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+           \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{41}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{prometteur}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+           \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{51}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{nouveaux clients}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+           \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{[4\PYZhy{}5][2\PYZhy{}3]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{loyal\PYZus{}potentiels}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+           \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{5[4\PYZhy{}5]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{champions}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+
+\PY{n}{rfm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{rfm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{RFM\PYZus{}SCORE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{n}{seg\PYZus{}map}\PY{p}{,} \PY{n}{regex}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+
+\PY{n}{rfm}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{37}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+                           CUSTOMER  recency  frequency   monetary  \textbackslash{}
+0                           AANCHOL      303          9   26065.00
+1                  ABBI COLLECTION        99        142   83628.00
+2           ABDUL RAHMAN(SINGAPORE)      150        196  114272.00
+3  ADDVEN SOLUTIONS PRIVATE LIMITED      207         94   72456.00
+4               AJS INDIAN BOUTIQUE       27         10    8368.75
+
+  recency\_score frequency\_score monetary\_score RFM\_SCORE           segment
+0             1               1              1        11    en hibernation
+1             3               4              3        34   clients fidèles
+2             2               4              4        24         en risque
+3             2               3              3        23         en risque
+4             5               1              1        51  nouveaux clients
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{38}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{segments} \PY{o}{=} \PY{n}{rfm}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{segment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
 \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{gcf}\PY{p}{(}\PY{p}{)}
 \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{p}{)}
 \PY{n}{fig}\PY{o}{.}\PY{n}{set\PYZus{}size\PYZus{}inches}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
 \PY{n}{squarify}\PY{o}{.}\PY{n}{plot}\PY{p}{(}
     \PY{n}{sizes}\PY{o}{=}\PY{n}{segments}\PY{p}{,}
-    \PY{n}{label}\PY{o}{=}\PY{p}{[}\PY{n}{label} \PY{k}{for} \PY{n}{label} \PY{o+ow}{in} \PY{n}{segMap}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+    \PY{n}{label}\PY{o}{=}\PY{p}{[}\PY{n}{label} \PY{k}{for} \PY{n}{label} \PY{o+ow}{in} \PY{n}{seg\PYZus{}map}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{,}
     \PY{n}{color}\PY{o}{=}\PY{p}{[}
         \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZsh{}AFB6B5}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
         \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZsh{}F0819A}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
@@ -1254,7 +1401,6 @@ visualisation}\label{segmentation-map-visualisation}}
     \PY{n}{bar\PYZus{}kwargs}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{alpha}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+m+mi}{1}\PY{p}{\PYZcb{}}\PY{p}{,}
     \PY{n}{text\PYZus{}kwargs}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fontsize}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+m+mi}{15}\PY{p}{\PYZcb{}}\PY{p}{,}
 \PY{p}{)}
-
 \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Carte de segmentation client}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fréquence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{18}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Récence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{18}\PY{p}{)}
@@ -1262,159 +1408,164 @@ visualisation}\label{segmentation-map-visualisation}}
 \end{Verbatim}
 \end{tcolorbox}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-    \end{Verbatim}
-
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{data_processing1_files/data_processing1_49_1.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{data_processing1_files/data_processing1_49_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{37}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{pandasRfmDf}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{37}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-                               Customer  Recence  Frequence   Monetary  \textbackslash{}
-0                           VISHA DEVAN       41        766   692446.0
-1                   MULBERRIES BOUTIQUE       39       3756  3649692.0
-2                      DANESHWARY RAMAR        4        281   218710.0
-3                         RINA THAKURTA       36        296   412188.0
-4                 PUNITHAVATHY KARUPIAH       35        284   270416.0
-5                     VAHARSHA BOUTIQUE       48       1445  1290440.0
-6                 FUSION FASHIONS CORP.       22        835   621487.0
-7                         SHILPI KUMARI       29        807   533130.0
-8          IBRAHIM MAFTHOOH(JANASYA.IN)       27        480   430850.0
-9                                  AVIN        1        634   423581.0
-10                    MRS. SUMITHA RAJU       20        445   282260.0
-11                   REVATHY LOGANATHAN       32        464   436862.0
-12                      THANA MARIMUTHU       15        822   647520.0
-13  VINI’S AUTHENTIC INDIAN ETHNIC WEAR       36        324   250936.0
-14       THILAS BOMBAY BOUTIQUE SDN BHD       55        848   525608.0
-15                       MOHANA KARTHIK       34        702   346992.0
-16                   AMBIKA SYAM SUNDAR        9        381   254658.0
-17                   MANGROWTEE SOOKDEB       43        286   288196.0
-18                       KHANJANA MOJEE       29        317   358736.0
-19              BHANU SALEINE NAUNITHAM        6        857   787095.0
-
-    recence\_score  frequence\_score  monetary\_score RFM\_SCORE    segment
-0             1.0              3.0             3.0       133  Champions
-1             1.0              3.0             3.0       133  Champions
-2             0.0              3.0             3.0       033  Champions
-3             1.0              3.0             3.0       133  Champions
-4             1.0              3.0             3.0       133  Champions
-5             1.0              3.0             3.0       133  Champions
-6             0.0              3.0             3.0       033  Champions
-7             1.0              3.0             3.0       133  Champions
-8             0.0              3.0             3.0       033  Champions
-9             0.0              3.0             3.0       033  Champions
-10            0.0              3.0             3.0       033  Champions
-11            1.0              3.0             3.0       133  Champions
-12            0.0              3.0             3.0       033  Champions
-13            1.0              3.0             3.0       133  Champions
-14            1.0              3.0             3.0       133  Champions
-15            1.0              3.0             3.0       133  Champions
-16            0.0              3.0             3.0       033  Champions
-17            1.0              3.0             3.0       133  Champions
-18            1.0              3.0             3.0       133  Champions
-19            0.0              3.0             3.0       033  Champions
-\end{Verbatim}
-\end{tcolorbox}
-        
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{44}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{X} \PY{o}{=} \PY{n}{pandasRfmDf}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{recence\PYZus{}score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{frequence\PYZus{}score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
-\PY{n}{labels} \PY{o}{=} \PY{n}{pandasRfmDf}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-\PY{n}{results} \PY{o}{=} \PY{p}{\PYZob{}}
-    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Nombre d}\PY{l+s+se}{\PYZbs{}\PYZsq{}}\PY{l+s+s1}{Observations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{,}
-    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Nombre de Segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n}{labels}\PY{o}{.}\PY{n}{nunique}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{,}
-    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Silouhette score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n+nb}{round}\PY{p}{(}\PY{n}{silhouette\PYZus{}score}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{labels}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{]}\PY{p}{,}
-    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Calinski Harabasz Score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n+nb}{round}\PY{p}{(}\PY{n}{calinski\PYZus{}harabasz\PYZus{}score}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{labels}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{]}\PY{p}{,}
-    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Davies Bouldin Score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n+nb}{round}\PY{p}{(}\PY{n}{davies\PYZus{}bouldin\PYZus{}score}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{labels}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{]}
-\PY{p}{\PYZcb{}}
-
-\PY{n}{df\PYZus{}results} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{results}\PY{p}{)}
-\PY{n}{df\PYZus{}results}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{T}
-\end{Verbatim}
-\end{tcolorbox}
-
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{44}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-                               0
-Nombre d'Observations    124.000
-Nombre de Segment          7.000
-Silouhette score           0.441
-Calinski Harabasz Score   93.824
-Davies Bouldin Score       0.818
-\end{Verbatim}
-\end{tcolorbox}
-        
-    \hypertarget{analyse-des-segments}{%
-\subsection{Analyse des segments}\label{analyse-des-segments}}
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{39}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{pandasRfmDf}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Recence}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Monetary}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Frequence}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PYZbs{}
-\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PYZbs{}
-\PY{o}{.}\PY{n}{agg}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{std}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{max}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{min}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+\PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k+kn}{import} \PY{n}{display}\PY{p}{,} \PY{n}{HTML}
+\PY{n}{X} \PY{o}{=} \PY{n}{rfm}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{recency\PYZus{}score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{frequency\PYZus{}score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+\PY{n}{labels} \PY{o}{=} \PY{n}{rfm}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{n}{results} \PY{o}{=} \PY{p}{\PYZob{}}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of Observations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{,}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of Segments}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n}{labels}\PY{o}{.}\PY{n}{nunique}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Calinski Harabasz Score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n+nb}{round}\PY{p}{(}\PY{n}{calinski\PYZus{}harabasz\PYZus{}score}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{labels}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Davies Bouldin Score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{n+nb}{round}\PY{p}{(}\PY{n}{davies\PYZus{}bouldin\PYZus{}score}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{labels}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{]}
+\PY{p}{\PYZcb{}}
+\PY{n}{df\PYZus{}results} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{results}\PY{p}{,}\PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{valeur}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+\PY{n}{df\PYZus{}results}\PY{o}{.}\PY{n}{T}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
 \prompt{Out}{outcolor}{39}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-               Recence                            Monetary                 \textbackslash{}
-                  mean        std  max  min           mean            std
-segment
-Champions    28.523810  14.814247   55    1  636153.095238  732963.020299
-Dormant     239.903226  36.630911  297  177   54998.354839   44493.280319
-En risque   115.818182  32.868886  165   78   75024.363636   37736.313734
-High value  236.500000  62.932504  281  192  357876.000000   21439.477606
-Loyal       160.444444  58.588517  266    6  597244.444444  432359.238641
-Prometteur   83.300000  53.157264  170   22  140876.900000   42098.640661
-Rookie       32.904762  25.426177   74    3   65814.523810   29265.676891
-
-                                  Frequence
-                  max       min        mean         std   max  min
-segment
-Champions   3649692.0  218710.0  768.571429  751.848427  3756  281
-Dormant      185882.0   12916.0   63.677419   52.472461   247    9
-En risque    141360.0   38600.0   84.272727   27.785215   126   38
-High value   373036.0  342716.0  202.500000   74.246212   255  150
-Loyal       2034416.0  177550.0  584.277778  295.305187  1316  277
-Prometteur   234086.0   83628.0  171.000000   38.892565   272  129
-Rookie       153552.0   20965.0   74.952381   34.015403   128   13
+                          valeur
+Number of Observations   161.000
+Number of Segments        10.000
+Calinski Harabasz Score  190.606
+Davies Bouldin Score       0.568
 \end{Verbatim}
 \end{tcolorbox}
         
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{40}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
-\PY{n}{ax} \PY{o}{=} \PY{n}{sns}\PY{o}{.}\PY{n}{countplot}\PY{p}{(}\PY{n}{data} \PY{o}{=} \PY{n}{pandasRfmDf}\PY{p}{,}
-                   \PY{n}{x}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
-                   \PY{n}{palette}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Set2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\PY{n}{total} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{pandasRfmDf}\PY{o}{.}\PY{n}{segment}\PY{p}{)}
+\PY{c+c1}{\PYZsh{} sélectionne uniquement les colonnes \PYZsq{}récence\PYZsq{}, \PYZsq{}monétaire\PYZsq{}, \PYZsq{}fréquence\PYZsq{} et \PYZsq{}segment\PYZsq{} du RFM DataFrame.}
+\PY{c+c1}{\PYZsh{} regroupe le DataFrame par la colonne \PYZsq{}segment\PYZsq{}.}
+\PY{c+c1}{\PYZsh{} applique les fonctions d\PYZsq{}agrégation \PYZsq{}mean\PYZsq{}, \PYZsq{}std\PYZsq{}, \PYZsq{}max\PYZsq{} et \PYZsq{}min\PYZsq{} à chaque colonne pour chaque groupe de segments.}
+\PY{n}{rfm}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{recency}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{monetary}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{frequency}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PYZbs{}
+\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PYZbs{}
+\PY{o}{.}\PY{n}{agg}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{std}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{max}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{min}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
 
-\PY{c+c1}{\PYZsh{}calculer le pourcentage et l\PYZsq{}afficher}
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{40}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+                       recency                            monetary  \textbackslash{}
+                          mean        std  max  min           mean
+segment
+besoin d'attention  104.700000  18.043466  131   82   66390.800000
+champions            25.000000        NaN   25   25  207064.000000
+clients fidèles      77.058824  22.607241  142   40  468750.661765
+en hibernation      284.142857  35.897473  334  228   34424.761905
+en risque           226.133333  57.592345  341  150  148202.900000
+loyal\_potentiels     30.545455  17.980750   59    4   56507.822727
+ne peut pas perdre  225.230769  40.624610  310  169  690323.384615
+nouveaux clients     19.666667   9.126561   33    5   16068.366111
+prometteur           43.800000   3.834058   48   39   26553.000000
+prsq dormant        109.000000  23.330952  145   79   50978.000000
+
+                                                         frequency  \textbackslash{}
+                              std        max       min        mean
+segment
+besoin d'attention   20825.358734   102796.0   38600.0   97.000000
+champions                     NaN   207064.0  207064.0  305.000000
+clients fidèles     671154.902469  4030145.5   83628.0  568.705882
+en hibernation       25972.145697   107388.0   12916.0   34.476190
+en risque           119392.596001   595351.0   40536.0  145.666667
+loyal\_potentiels     32749.124918   153552.0   17212.5   61.772727
+ne peut pas perdre  472428.514969  2034416.0  206231.0  662.153846
+nouveaux clients     15075.166253    72100.0    7496.0   15.277778
+prometteur           10758.742143    35675.0   10240.0   18.600000
+prsq dormant          9748.982921    62064.0   39664.0   47.714286
+
+
+                           std   max  min
+segment
+besoin d'attention   20.160467   126   70
+champions                  NaN   305  305
+clients fidèles     680.325391  4025  142
+en hibernation       16.913365    66    9
+en risque            60.057061   295   78
+loyal\_potentiels     30.199230   128   29
+ne peut pas perdre  303.472362  1316  306
+nouveaux clients      5.737447    26    5
+prometteur            6.580274    29   13
+prsq dormant         14.761598    70   26
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{41}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{palette} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Set2}\PY{l+s+s1}{\PYZsq{}}
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+\PY{n}{ax} \PY{o}{=} \PY{n}{sns}\PY{o}{.}\PY{n}{countplot}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{n}{rfm}\PY{p}{,}
+                   \PY{n}{x}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                   \PY{n}{palette}\PY{o}{=}\PY{n}{palette}\PY{p}{)}
+\PY{n}{total} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{rfm}\PY{o}{.}\PY{n}{segment}\PY{p}{)}
 \PY{k}{for} \PY{n}{patch} \PY{o+ow}{in} \PY{n}{ax}\PY{o}{.}\PY{n}{patches}\PY{p}{:}
     \PY{n}{percentage} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZob{}:.1f\PYZcb{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{100} \PY{o}{*} \PY{n}{patch}\PY{o}{.}\PY{n}{get\PYZus{}height}\PY{p}{(}\PY{p}{)}\PY{o}{/}\PY{n}{total}\PY{p}{)}
-    \PY{n}{x} \PY{o}{=} \PY{n}{patch}\PY{o}{.}\PY{n}{get\PYZus{}x}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{n}{patch}\PY{o}{.}\PY{n}{get\PYZus{}width}\PY{p}{(} \PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.15}
-    \PY{n}{y} \PY{o}{=} \PY{n}{patch}\PY{o}{.}\PY{n}{get\PYZus{}y}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{n}{patch}\PY{o}{.}\PY{n}{get\PYZus{}height}\PY{p}{(} \PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1.015}
-    \PY{n}{ax}\PY{o}{.}\PY{n}{annotate}\PY{p}{(}\PY{n}{percentage}\PY{p}{,} \PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{n}{size} \PY{o}{=} \PY{l+m+mi}{14}\PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{patch}\PY{o}{.}\PY{n}{get\PYZus{}x}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{n}{patch}\PY{o}{.}\PY{n}{get\PYZus{}width}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.17}
+    \PY{n}{y} \PY{o}{=} \PY{n}{patch}\PY{o}{.}\PY{n}{get\PYZus{}y}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{n}{patch}\PY{o}{.}\PY{n}{get\PYZus{}height}\PY{p}{(}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1.005}
+    \PY{n}{ax}\PY{o}{.}\PY{n}{annotate}\PY{p}{(}\PY{n}{percentage}\PY{p}{,} \PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Nombre de Clients par Segments}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Segment}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Compte}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
 
-\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Nombre de Clients par Segement}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{size} \PY{o}{=} \PY{l+m+mi}{10}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{n}{size} \PY{o}{=} \PY{l+m+mi}{10}\PY{p}{)}
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{data_processing1_files/data_processing1_52_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{42}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+\PY{n}{sns}\PY{o}{.}\PY{n}{scatterplot}\PY{p}{(}
+    \PY{n}{data}\PY{o}{=}\PY{n}{rfm}\PY{p}{,} \PY{n}{x}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{recency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{y}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{frequency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{hue}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{segment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{palette}\PY{o}{=}\PY{n}{palette}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{60}
+\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Recence \PYZam{} Frequence par Segments}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Recency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{best}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Segments}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{title\PYZus{}fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{data_processing1_files/data_processing1_53_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{43}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{fig}\PY{p}{,} \PY{n}{axes} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+\PY{n}{fig}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{RFM Segment Analysis}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+\PY{n}{feature\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{recency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{monetary}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{frequency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+\PY{k}{for} \PY{n}{idx}\PY{p}{,} \PY{n}{col} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{feature\PYZus{}list}\PY{p}{)}\PY{p}{:}
+    \PY{n}{sns}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}
+        \PY{n}{ax}\PY{o}{=}\PY{n}{axes}\PY{p}{[}\PY{n}{idx}\PY{p}{]}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{rfm}\PY{p}{,} \PY{n}{x}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{segment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{y}\PY{o}{=}\PY{n}{feature\PYZus{}list}\PY{p}{[}\PY{n}{idx}\PY{p}{]}\PY{p}{,} \PY{n}{palette}\PY{o}{=}\PY{n}{palette}
+    \PY{p}{)}
+    \PY{n}{axes}\PY{p}{[}\PY{n}{idx}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{n}{axes}\PY{p}{[}\PY{n}{idx}\PY{p}{]}\PY{o}{.}\PY{n}{get\PYZus{}xticklabels}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{rotation}\PY{o}{=}\PY{l+m+mi}{60}\PY{p}{)}
+    \PY{k}{if} \PY{n}{idx} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+        \PY{n}{axes}\PY{p}{[}\PY{n}{idx}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{400}\PY{p}{]}\PY{p}{)}
+    \PY{k}{if} \PY{n}{idx} \PY{o}{==} \PY{l+m+mi}{2}\PY{p}{:}
+        \PY{n}{axes}\PY{p}{[}\PY{n}{idx}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{]}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
@@ -1424,107 +1575,337 @@ Rookie       153552.0   20965.0   74.952381   34.015403   128   13
     \end{center}
     { \hspace*{\fill} \\}
     
+    \hypertarget{clv}{%
+\section{CLV}\label{clv}}
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{41}{\boxspacing}
+\prompt{In}{incolor}{44}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
-\PY{n}{sns}\PY{o}{.}\PY{n}{scatterplot}\PY{p}{(}
-    \PY{n}{data}\PY{o}{=}\PY{n}{pandasRfmDf}\PY{p}{,} \PY{n}{x}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Recence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{y}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{hue}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{segment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{palette}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Set2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{100}
+\PY{n}{cltv\PYZus{}df} \PY{o}{=} \PY{n}{pandasDF}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{CUSTOMER}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{agg}\PY{p}{(}
+    \PY{p}{\PYZob{}}
+        \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{p}{[}
+            \PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{p}{(}\PY{n}{x}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{x}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{days}\PY{p}{,}
+            \PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{p}{(}\PY{n}{today\PYZus{}date} \PY{o}{\PYZhy{}} \PY{n}{x}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{days}\PY{p}{,}
+        \PY{p}{]}\PY{p}{,}
+        \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{index}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{nunique}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+        \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{GROSS AMT}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{sum}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+    \PY{p}{\PYZcb{}}
 \PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Recence \PYZam{} Frequence par Segments}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Recence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{best}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Segments}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{title\PYZus{}fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{cltv\PYZus{}df}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{n}{cltv\PYZus{}df}\PY{o}{.}\PY{n}{columns}\PY{o}{.}\PY{n}{droplevel}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+\PY{n}{cltv\PYZus{}df}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{recency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{T}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{frequency}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{monetary}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+\PY{n}{cltv\PYZus{}df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{data_processing1_files/data_processing1_55_0.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{44}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+                                  recency    T  frequency   monetary
+CUSTOMER
+AANCHOL                                 0  303          9   26065.00
+ABBI COLLECTION                         0   99        142   83628.00
+ABDUL RAHMAN(SINGAPORE)                23  173        196  114272.00
+ADDVEN SOLUTIONS PRIVATE LIMITED        0  207         94   72456.00
+AJS INDIAN BOUTIQUE                     0   27         10    8368.75
+\end{Verbatim}
+\end{tcolorbox}
+        
     \hypertarget{cohort-analysis}{%
 \section{Cohort Analysis}\label{cohort-analysis}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{45}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{operator} \PY{k+kn}{import} \PY{n}{attrgetter}
+\PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{colors} \PY{k}{as} \PY{n+nn}{mcolors}
+
+\PY{k}{def} \PY{n+nf}{CohortAnalysis}\PY{p}{(}\PY{n}{dataframe}\PY{p}{)}\PY{p}{:}
+
+    \PY{n}{data} \PY{o}{=} \PY{n}{dataframe}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+    \PY{n}{data} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{CUSTOMER}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{index}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{drop\PYZus{}duplicates}\PY{p}{(}\PY{p}{)}
+    \PY{c+c1}{\PYZsh{}converting to date like as it doesnt recognize the mm\PYZhy{}dd\PYZhy{}yy}
+    \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,}\PY{n}{infer\PYZus{}datetime\PYZus{}format}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)} 
+    \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{order\PYZus{}month}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{dt}\PY{o}{.}\PY{n}{to\PYZus{}period}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{M}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cohort}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{p}{(}
+        \PY{n}{data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{CUSTOMER}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{transform}\PY{p}{(}
+            \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{min}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{dt}\PY{o}{.}\PY{n}{to\PYZus{}period}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{M}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{p}{)}
+    \PY{n}{cohort\PYZus{}data} \PY{o}{=} \PY{p}{(}
+        \PY{n}{data}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cohort}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{order\PYZus{}month}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+        \PY{o}{.}\PY{n}{agg}\PY{p}{(}\PY{n}{n\PYZus{}customers}\PY{o}{=}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{CUSTOMER}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{nunique}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{n}{drop}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+    \PY{p}{)}
+    \PY{n}{cohort\PYZus{}data}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{period\PYZus{}number}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{cohort\PYZus{}data}\PY{o}{.}\PY{n}{order\PYZus{}month} \PY{o}{\PYZhy{}} \PY{n}{cohort\PYZus{}data}\PY{o}{.}\PY{n}{cohort}\PY{p}{)}\PY{o}{.}\PY{n}{apply}\PY{p}{(}
+        \PY{n}{attrgetter}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{p}{)}
+    \PY{n}{cohort\PYZus{}pivot} \PY{o}{=} \PY{n}{cohort\PYZus{}data}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}
+        \PY{n}{index}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cohort}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{period\PYZus{}number}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{values}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n\PYZus{}customers}\PY{l+s+s2}{\PYZdq{}}
+    \PY{p}{)}
+    \PY{n}{cohort\PYZus{}size} \PY{o}{=} \PY{n}{cohort\PYZus{}pivot}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}
+    \PY{n}{retention\PYZus{}matrix} \PY{o}{=} \PY{n}{cohort\PYZus{}pivot}\PY{o}{.}\PY{n}{divide}\PY{p}{(}\PY{n}{cohort\PYZus{}size}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+    \PY{k}{with} \PY{n}{sns}\PY{o}{.}\PY{n}{axes\PYZus{}style}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{white}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{:}
+        \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}
+            \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{sharey}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{gridspec\PYZus{}kw}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{width\PYZus{}ratios}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{]}\PY{p}{\PYZcb{}}
+        \PY{p}{)}
+        \PY{n}{sns}\PY{o}{.}\PY{n}{heatmap}\PY{p}{(}
+            \PY{n}{retention\PYZus{}matrix}\PY{p}{,}
+            \PY{n}{mask}\PY{o}{=}\PY{n}{retention\PYZus{}matrix}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+            \PY{n}{annot}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,}
+            \PY{n}{cbar}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,}
+            \PY{n}{fmt}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{.0}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+            \PY{n}{cmap}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{coolwarm}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+            \PY{n}{ax}\PY{o}{=}\PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}
+        \PY{p}{)}
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Monthly Cohorts: User Retention}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set}\PY{p}{(}\PY{n}{xlabel}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZsh{} of periods}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ylabel}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{white\PYZus{}cmap} \PY{o}{=} \PY{n}{mcolors}\PY{o}{.}\PY{n}{ListedColormap}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{white}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{sns}\PY{o}{.}\PY{n}{heatmap}\PY{p}{(}
+            \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{cohort\PYZus{}size}\PY{p}{)}\PY{o}{.}\PY{n}{rename}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+m+mi}{0}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cohort\PYZus{}size}\PY{l+s+s2}{\PYZdq{}}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{p}{,}
+            \PY{n}{annot}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,}
+            \PY{n}{cbar}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,}
+            \PY{n}{fmt}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{g}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+            \PY{n}{cmap}\PY{o}{=}\PY{n}{white\PYZus{}cmap}\PY{p}{,}
+            \PY{n}{ax}\PY{o}{=}\PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+        \PY{p}{)}
+        \PY{n}{fig}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{46}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{pandasDF} \PY{o}{=} \PY{n}{finalDf}\PY{o}{.}\PY{n}{toPandas}\PY{p}{(}\PY{p}{)}
+\PY{n}{CohortAnalysis}\PY{p}{(}\PY{n}{pandasDF}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{data_processing1_files/data_processing1_59_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \hypertarget{market-basket-analysis}{%
+\section{Market basket analysis}\label{market-basket-analysis}}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
 \prompt{In}{incolor}{47}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{CohortAnalysis}\PY{p}{(}\PY{n}{dataframe}\PY{p}{)}\PY{p}{:}
-    \PY{n}{data} \PY{o}{=} \PY{n}{dataframe}
-    \PY{n}{data} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{select}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{CUSTOMER}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Index}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DATE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Months}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-    \PY{n}{data}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
-\PY{n}{CohortAnalysis}\PY{p}{(}\PY{n}{rdd}\PY{o}{.}\PY{n}{toDF}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\PY{n}{pandasDF}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{47}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+       index      DATE  Months                   CUSTOMER    Style  \textbackslash{}
+0          0  06-05-21  Jun-21         REVATHY LOGANATHAN  MEN5004
+1          1  06-05-21  Jun-21         REVATHY LOGANATHAN  MEN5004
+2          2  06-05-21  Jun-21         REVATHY LOGANATHAN  MEN5004
+3          3  06-05-21  Jun-21         REVATHY LOGANATHAN  MEN5009
+4          4  06-05-21  Jun-21         REVATHY LOGANATHAN  MEN5011
+{\ldots}      {\ldots}       {\ldots}     {\ldots}                        {\ldots}      {\ldots}
+36369  26902  12-06-21  Dec-21      PUNITHAVATHY KARUPIAH   SET243
+36370  27641  01-17-22  Jan-22        KAVEENAZ COLLECTION  JNE3744
+36371  25523  10-20-21  Oct-21                TANUJ UPPAL    J0153
+36372  25892  10-29-21  Oct-21        DEEPARATI MUKHERJEE    J0278
+36373  29041  02-22-22  Feb-22  ETHNIC WEAVES FASHION LLC    J0201
+
+                  SKU  Size  PCS    RATE  GROSS AMT
+0        MEN5004-KR-L     L  1.0  616.56      617.0
+1       MEN5004-KR-XL    XL  1.0  616.56      617.0
+2      MEN5004-KR-XXL   XXL  1.0  616.56      617.0
+3        MEN5009-KR-L     L  1.0  616.56      617.0
+4        MEN5011-KR-L     L  1.0  616.56      617.0
+{\ldots}               {\ldots}   {\ldots}  {\ldots}     {\ldots}        {\ldots}
+36369  SET243-KR-PP-M  None  1.0  698.00      698.0
+36370  JNE3744-TU-XXL  None  1.0  562.50      562.0
+36371      J0153-DR-S  None  1.0  585.00      562.0
+36372     J0278-SET-L  None  1.0  977.78      948.0
+36373    J0201-TP-XXL  None  1.0  562.50      534.0
+
+[36374 rows x 10 columns]
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{48}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{marketBasketDf}  \PY{o}{=} \PY{n}{pandasDF}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DATE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CUSTOMER}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Style}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+\PY{n}{marketBasketDf}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{48}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+       DATE            CUSTOMER    Style
+0  06-05-21  REVATHY LOGANATHAN  MEN5004
+1  06-05-21  REVATHY LOGANATHAN  MEN5004
+2  06-05-21  REVATHY LOGANATHAN  MEN5004
+3  06-05-21  REVATHY LOGANATHAN  MEN5009
+4  06-05-21  REVATHY LOGANATHAN  MEN5011
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{49}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{marketBasketDf}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{transaction\PYZus{}id}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{marketBasketDf}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CUSTOMER}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{str}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZus{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n}{marketBasketDf}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Style}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+\PY{n}{marketBasketDf}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/tmp/ipykernel\_18896/301802437.py:1: SettingWithCopyWarning:
+
+
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row\_indexer,col\_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-
+docs/stable/user\_guide/indexing.html\#returning-a-view-versus-a-copy
+
+    \end{Verbatim}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{49}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+           DATE                   CUSTOMER    Style       transaction\_id
+0      06-05-21         REVATHY LOGANATHAN  MEN5004      REVATHY\_MEN5004
+1      06-05-21         REVATHY LOGANATHAN  MEN5004      REVATHY\_MEN5004
+2      06-05-21         REVATHY LOGANATHAN  MEN5004      REVATHY\_MEN5004
+3      06-05-21         REVATHY LOGANATHAN  MEN5009      REVATHY\_MEN5009
+4      06-05-21         REVATHY LOGANATHAN  MEN5011      REVATHY\_MEN5011
+{\ldots}         {\ldots}                        {\ldots}      {\ldots}                  {\ldots}
+36369  12-06-21      PUNITHAVATHY KARUPIAH   SET243  PUNITHAVATHY\_SET243
+36370  01-17-22        KAVEENAZ COLLECTION  JNE3744     KAVEENAZ\_JNE3744
+36371  10-20-21                TANUJ UPPAL    J0153          TANUJ\_J0153
+36372  10-29-21        DEEPARATI MUKHERJEE    J0278      DEEPARATI\_J0278
+36373  02-22-22  ETHNIC WEAVES FASHION LLC    J0201         ETHNIC\_J0201
+
+[36374 rows x 4 columns]
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{50}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{cross\PYZus{}mb\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{marketBasketDf}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{transaction\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}\PY{n}{marketBasketDf}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Style}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\PY{n}{cross\PYZus{}mb\PYZus{}df}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{50}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+Style               AN202  AN204  AN205  AN209  BL009  BL011  BL013  BL014  \textbackslash{}
+transaction\_id
+AANCHOL\_MEN5021         0      0      0      0      0      0      0      0
+AANCHOL\_SHIPPING        0      0      0      0      0      0      0      0
+ABBI\_J0005              0      0      0      0      0      0      0      0
+ABBI\_J0120              0      0      0      0      0      0      0      0
+ABBI\_J0249              0      0      0      0      0      0      0      0
+{\ldots}                   {\ldots}    {\ldots}    {\ldots}    {\ldots}    {\ldots}    {\ldots}    {\ldots}    {\ldots}
+YASSHLINY\_SET286        0      0      0      0      0      0      0      0
+YASSHLINY\_SET300        0      0      0      0      0      0      0      0
+YASSHLINY\_SET378        0      0      0      0      0      0      0      0
+YASSHLINY\_SET392        0      0      0      0      0      0      0      0
+YASSHLINY\_SHIPPING      0      0      0      0      0      0      0      0
+
+Style               BL020  BL023  {\ldots}  sEt291  sEt300  sEt303  sEt316  sEt325  \textbackslash{}
+transaction\_id                    {\ldots}
+AANCHOL\_MEN5021         0      0  {\ldots}       0       0       0       0       0
+AANCHOL\_SHIPPING        0      0  {\ldots}       0       0       0       0       0
+ABBI\_J0005              0      0  {\ldots}       0       0       0       0       0
+ABBI\_J0120              0      0  {\ldots}       0       0       0       0       0
+ABBI\_J0249              0      0  {\ldots}       0       0       0       0       0
+{\ldots}                   {\ldots}    {\ldots}  {\ldots}     {\ldots}     {\ldots}     {\ldots}     {\ldots}     {\ldots}
+YASSHLINY\_SET286        0      0  {\ldots}       0       0       0       0       0
+YASSHLINY\_SET300        0      0  {\ldots}       0       0       0       0       0
+YASSHLINY\_SET378        0      0  {\ldots}       0       0       0       0       0
+YASSHLINY\_SET392        0      0  {\ldots}       0       0       0       0       0
+YASSHLINY\_SHIPPING      0      0  {\ldots}       0       0       0       0       0
+
+Style               sEt329  sEt334  sEt339  sEt353  set345
+transaction\_id
+AANCHOL\_MEN5021          0       0       0       0       0
+AANCHOL\_SHIPPING         0       0       0       0       0
+ABBI\_J0005               0       0       0       0       0
+ABBI\_J0120               0       0       0       0       0
+ABBI\_J0249               0       0       0       0       0
+{\ldots}                    {\ldots}     {\ldots}     {\ldots}     {\ldots}     {\ldots}
+YASSHLINY\_SET286         0       0       0       0       0
+YASSHLINY\_SET300         0       0       0       0       0
+YASSHLINY\_SET378         0       0       0       0       0
+YASSHLINY\_SET392         0       0       0       0       0
+YASSHLINY\_SHIPPING       0       0       0       0       0
+
+[4487 rows x 1064 columns]
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{51}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{encode}\PY{p}{(}\PY{n}{itemFreq}\PY{p}{)}\PY{p}{:}
+    \PY{n}{res} \PY{o}{=} \PY{l+m+mi}{0}
+    \PY{k}{if} \PY{n}{itemFreq} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{:}
+        \PY{n}{res} \PY{o}{=} \PY{l+m+mi}{1}
+    \PY{k}{return} \PY{n}{res}
+\PY{n}{basketInput} \PY{o}{=} \PY{n}{cross\PYZus{}mb\PYZus{}df}\PY{o}{.}\PY{n}{applymap}\PY{p}{(}\PY{n}{encode}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{52}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{basketInput}\PY{o}{.}\PY{n}{discribe}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
     \begin{Verbatim}[commandchars=\\\{\}, frame=single, framerule=2mm, rulecolor=\color{outerrorbackground}]
 \textcolor{ansi-red}{---------------------------------------------------------------------------}
-\textcolor{ansi-red}{TypeError}                                 Traceback (most recent call last)
-\textcolor{ansi-green-intense}{\textbf{/home/latif/CRM Analysis Project/data\_processing1.ipynb Cell 58}} in \textcolor{ansi-cyan}{5
-}\textcolor{ansi-green-intense}{\textbf{      <a href='vscode-notebook-cell:/home/latif/CRM\%20Analysis\%20Project/data\_processing1.ipynb\#Y110sZmlsZQ\%3D\%3D?line=2'>3</a>}}     data = data.select("CUSTOMER", "Index","DATE", "Months")
-\textcolor{ansi-green-intense}{\textbf{      <a href='vscode-notebook-cell:/home/latif/CRM\%20Analysis\%20Project/data\_processing1.ipynb\#Y110sZmlsZQ\%3D\%3D?line=3'>4</a>}}     data.show()
-\textcolor{ansi-green}{----> <a href='vscode-notebook-cell:/home/latif/CRM\%20Analysis\%20Project/data\_processing1.ipynb\#Y110sZmlsZQ\%3D\%3D?line=4'>5</a>} CohortAnalysis(rdd.toDF())
+\textcolor{ansi-red}{AttributeError}                            Traceback (most recent call last)
+Cell \textcolor{ansi-green}{In [52], line 1}
+\textcolor{ansi-green}{----> 1} \setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{basketInput\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{discribe\strut}()
 
-File \textcolor{ansi-green}{\textasciitilde{}/.local/lib/python3.10/site-packages/pyspark/sql/session.py:102}, in \textcolor{ansi-cyan}{\_monkey\_patch\_RDD.<locals>.toDF}\textcolor{ansi-blue}{(self, schema, sampleRatio)}
-\textcolor{ansi-green-intense}{\textbf{     74}} @no\_type\_check
-\textcolor{ansi-green-intense}{\textbf{     75}} def toDF(self, schema=None, sampleRatio=None):
-\textcolor{ansi-green-intense}{\textbf{     76}}     """
-\textcolor{ansi-green-intense}{\textbf{     77}}     Converts current :class:`RDD` into a :class:`DataFrame`
-\textcolor{ansi-green-intense}{\textbf{     78}} 
-\textcolor{ansi-green}{   ({\ldots})}
-\textcolor{ansi-green-intense}{\textbf{    100}}     [Row(name='Alice', age=1)]
-\textcolor{ansi-green-intense}{\textbf{    101}}     """
-\textcolor{ansi-green}{--> 102}     return sparkSession.createDataFrame(self, schema, sampleRatio)
+File \textcolor{ansi-green}{\textasciitilde{}/.local/lib/python3.10/site-packages/pandas/core/generic.py:5902}, in \textcolor{ansi-cyan}{NDFrame.\_\_getattr\_\_}\textcolor{ansi-blue}{(self, name)}
+\textcolor{ansi-green-intense}{\textbf{   5895}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{if}} (
+\textcolor{ansi-green-intense}{\textbf{   5896}}     name \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{not}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{in}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}\_internal\_names\_set
+\textcolor{ansi-green-intense}{\textbf{   5897}}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{and}} name \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{not}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{in}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}\_metadata
+\textcolor{ansi-green-intense}{\textbf{   5898}}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{and}} name \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{not}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{in}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}\_accessors
+\textcolor{ansi-green-intense}{\textbf{   5899}}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{175,0,255}}{\textbf{and}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}\_info\_axis\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{.}\_can\_hold\_identifiers\_and\_holds\_name(name)
+\textcolor{ansi-green-intense}{\textbf{   5900}} ):
+\textcolor{ansi-green-intense}{\textbf{   5901}}     \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{return}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{self}[name]
+\textcolor{ansi-green}{-> 5902} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\textbf{return}} \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{object\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{98,98,98}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{.\strut}}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,0,255}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{\_\_getattribute\_\_\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{(\strut}\def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{0,135,0}}{\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{self\strut}}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{,\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{ \strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{name\strut}\setlength{\fboxsep}{0pt}\colorbox{ansi-yellow}{)\strut}
 
-File \textcolor{ansi-green}{\textasciitilde{}/.local/lib/python3.10/site-packages/pyspark/sql/session.py:894}, in \textcolor{ansi-cyan}{SparkSession.createDataFrame}\textcolor{ansi-blue}{(self, data, schema, samplingRatio, verifySchema)}
-\textcolor{ansi-green-intense}{\textbf{    889}} if has\_pandas and isinstance(data, pandas.DataFrame):
-\textcolor{ansi-green-intense}{\textbf{    890}}     \# Create a DataFrame from pandas DataFrame.
-\textcolor{ansi-green-intense}{\textbf{    891}}     return super(SparkSession, self).createDataFrame(  \# type: ignore[call-overload]
-\textcolor{ansi-green-intense}{\textbf{    892}}         data, schema, samplingRatio, verifySchema
-\textcolor{ansi-green-intense}{\textbf{    893}}     )
-\textcolor{ansi-green}{--> 894} return self.\_create\_dataframe(
-\textcolor{ansi-green-intense}{\textbf{    895}}     data, schema, samplingRatio, verifySchema  \# type: ignore[arg-type]
-\textcolor{ansi-green-intense}{\textbf{    896}} )
+\textcolor{ansi-red}{AttributeError}: 'DataFrame' object has no attribute 'discribe'
+    \end{Verbatim}
 
-File \textcolor{ansi-green}{\textasciitilde{}/.local/lib/python3.10/site-packages/pyspark/sql/session.py:934}, in \textcolor{ansi-cyan}{SparkSession.\_create\_dataframe}\textcolor{ansi-blue}{(self, data, schema, samplingRatio, verifySchema)}
-\textcolor{ansi-green-intense}{\textbf{    931}}         return obj
-\textcolor{ansi-green-intense}{\textbf{    933}} if isinstance(data, RDD):
-\textcolor{ansi-green}{--> 934}     rdd, struct = self.\_createFromRDD(data.map(prepare), schema, samplingRatio)
-\textcolor{ansi-green-intense}{\textbf{    935}} else:
-\textcolor{ansi-green-intense}{\textbf{    936}}     rdd, struct = self.\_createFromLocal(map(prepare, data), schema)
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{mlxtend}\PY{n+nn}{.}\PY{n+nn}{frequent\PYZus{}patterns} \PY{k+kn}{import} \PY{n}{apriori}\PY{p}{,} \PY{n}{association\PYZus{}rules}
 
-File \textcolor{ansi-green}{\textasciitilde{}/.local/lib/python3.10/site-packages/pyspark/sql/session.py:600}, in \textcolor{ansi-cyan}{SparkSession.\_createFromRDD}\textcolor{ansi-blue}{(self, rdd, schema, samplingRatio)}
-\textcolor{ansi-green-intense}{\textbf{    596}} """
-\textcolor{ansi-green-intense}{\textbf{    597}} Create an RDD for DataFrame from an existing RDD, returns the RDD and schema.
-\textcolor{ansi-green-intense}{\textbf{    598}} """
-\textcolor{ansi-green-intense}{\textbf{    599}} if schema is None or isinstance(schema, (list, tuple)):
-\textcolor{ansi-green}{--> 600}     struct = self.\_inferSchema(rdd, samplingRatio, names=schema)
-\textcolor{ansi-green-intense}{\textbf{    601}}     converter = \_create\_converter(struct)
-\textcolor{ansi-green-intense}{\textbf{    602}}     tupled\_rdd = rdd.map(converter)
+\PY{n}{freqItems} \PY{o}{=} \PY{n}{apriori}\PY{p}{(}\PY{n}{basketInput}\PY{p}{,} \PY{n}{min\PYZus{}support} \PY{o}{=} \PY{l+m+mf}{0.01}\PY{p}{,} \PY{n}{use\PYZus{}colnames} \PY{o}{=} \PY{k+kc}{True}\PY{p}{)}
+\PY{n}{rules} \PY{o}{=} \PY{n}{association\PYZus{}rules}\PY{p}{(}\PY{n}{freqItems}\PY{p}{,} \PY{n}{metric} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lift}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{freqItems}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
 
-File \textcolor{ansi-green}{\textasciitilde{}/.local/lib/python3.10/site-packages/pyspark/sql/session.py:553}, in \textcolor{ansi-cyan}{SparkSession.\_inferSchema}\textcolor{ansi-blue}{(self, rdd, samplingRatio, names)}
-\textcolor{ansi-green-intense}{\textbf{    551}} prefer\_timestamp\_ntz = is\_timestamp\_ntz\_preferred()
-\textcolor{ansi-green-intense}{\textbf{    552}} if samplingRatio is None:
-\textcolor{ansi-green}{--> 553}     schema = \_infer\_schema(
-\textcolor{ansi-green-intense}{\textbf{    554}}         first,
-\textcolor{ansi-green-intense}{\textbf{    555}}         names=names,
-\textcolor{ansi-green-intense}{\textbf{    556}}         infer\_dict\_as\_struct=infer\_dict\_as\_struct,
-\textcolor{ansi-green-intense}{\textbf{    557}}         prefer\_timestamp\_ntz=prefer\_timestamp\_ntz,
-\textcolor{ansi-green-intense}{\textbf{    558}}     )
-\textcolor{ansi-green-intense}{\textbf{    559}}     if \_has\_nulltype(schema):
-\textcolor{ansi-green-intense}{\textbf{    560}}         for row in rdd.take(100)[1:]:
+    \begin{Verbatim}[commandchars=\\\{\}]
+/home/latif/.local/lib/python3.10/site-
+packages/mlxtend/frequent\_patterns/fpcommon.py:110: DeprecationWarning:
 
-File \textcolor{ansi-green}{\textasciitilde{}/.local/lib/python3.10/site-packages/pyspark/sql/types.py:1302}, in \textcolor{ansi-cyan}{\_infer\_schema}\textcolor{ansi-blue}{(row, names, infer\_dict\_as\_struct, prefer\_timestamp\_ntz)}
-\textcolor{ansi-green-intense}{\textbf{   1299}}     items = sorted(row.\_\_dict\_\_.items())
-\textcolor{ansi-green-intense}{\textbf{   1301}} else:
-\textcolor{ansi-green}{-> 1302}     raise TypeError("Can not infer schema for type: \%s" \% type(row))
-\textcolor{ansi-green-intense}{\textbf{   1304}} fields = []
-\textcolor{ansi-green-intense}{\textbf{   1305}} for k, v in items:
+DataFrames with non-bool types result in worse computationalperformance and
+their support might be discontinued in the future.Please use a DataFrame with
+bool type
 
-\textcolor{ansi-red}{TypeError}: Can not infer schema for type: <class 'str'>
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
