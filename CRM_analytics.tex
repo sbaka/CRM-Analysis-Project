@@ -1,0 +1,824 @@
+\documentclass[11pt]{article}
+
+    \usepackage[breakable]{tcolorbox}
+    \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
+    
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % Maintain compatibility with old templates. Remove in nbconvert 6.0
+    \let\Oldincludegraphics\includegraphics
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionFormat{nocaption}{}
+    \captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
+
+    \usepackage{float}
+    \floatplacement{figure}{H} % forces figures to be placed at the correct location
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+
+    \usepackage{iftex}
+    \ifPDFTeX
+        \usepackage[T1]{fontenc}
+        \IfFileExists{alphabeta.sty}{
+              \usepackage{alphabeta}
+          }{
+              \usepackage[mathletters]{ucs}
+              \usepackage[utf8x]{inputenc}
+          }
+    \else
+        \usepackage{fontspec}
+        \usepackage{unicode-math}
+    \fi
+
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics
+                         % to support a larger range
+    \makeatletter % fix for old versions of grffile with XeLaTeX
+    \@ifpackagelater{grffile}{2019/11/01}
+    {
+      % Do nothing on new versions
+    }
+    {
+      \def\Gread@@xetex#1{%
+        \IfFileExists{"\Gin@base".bb}%
+        {\Gread@eps{\Gin@base.bb}}%
+        {\Gread@@xetex@aux#1}%
+      }
+    }
+    \makeatother
+    \usepackage[Export]{adjustbox} % Used to constrain images to a maximum size
+    \adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
+
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    % The default LaTeX title has an obnoxious amount of whitespace. By default,
+    % titling removes some of it. It also provides customization options.
+    \usepackage{titling}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{array}     % table support for pandoc >= 2.11.3
+    \usepackage{calc}      % table minipage width calculation for pandoc >= 2.11.1
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{mathrsfs}
+    
+
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+    \definecolor{ansi-default-inverse-fg}{HTML}{FFFFFF}
+    \definecolor{ansi-default-inverse-bg}{HTML}{000000}
+
+    % common color for the border for error outputs.
+    \definecolor{outerrorbackground}{HTML}{FFDFDF}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+
+
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    \title{CRM\_analytics}
+    
+    
+    
+    
+    
+% Pygments definitions
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\@namedef{PY@tok@w}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\@namedef{PY@tok@c}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cp}{\def\PY@tc##1{\textcolor[rgb]{0.61,0.40,0.00}{##1}}}
+\@namedef{PY@tok@k}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kt}{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\@namedef{PY@tok@o}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ow}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@nb}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nf}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@ne}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.80,0.25,0.22}{##1}}}
+\@namedef{PY@tok@nv}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@no}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\@namedef{PY@tok@nl}{\def\PY@tc##1{\textcolor[rgb]{0.46,0.46,0.00}{##1}}}
+\@namedef{PY@tok@ni}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@na}{\def\PY@tc##1{\textcolor[rgb]{0.41,0.47,0.13}{##1}}}
+\@namedef{PY@tok@nt}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nd}{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@s}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sd}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@si}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@se}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.36,0.12}{##1}}}
+\@namedef{PY@tok@sr}{\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@ss}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sx}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@m}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@gh}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gu}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gd}{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\@namedef{PY@tok@gi}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.52,0.00}{##1}}}
+\@namedef{PY@tok@gr}{\def\PY@tc##1{\textcolor[rgb]{0.89,0.00,0.00}{##1}}}
+\@namedef{PY@tok@ge}{\let\PY@it=\textit}
+\@namedef{PY@tok@gs}{\let\PY@bf=\textbf}
+\@namedef{PY@tok@gp}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@go}{\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@gt}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\@namedef{PY@tok@err}{\def\PY@bc##1{{\setlength{\fboxsep}{\string -\fboxrule}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}}
+\@namedef{PY@tok@kc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kd}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kr}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@bp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@fm}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@vc}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vg}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vi}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vm}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sa}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sb}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sc}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@dl}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s2}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sh}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s1}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@mb}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mf}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mh}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mi}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@il}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mo}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ch}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cm}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cpf}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@c1}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cs}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % For linebreaks inside Verbatim environment from package fancyvrb.
+    \makeatletter
+        \newbox\Wrappedcontinuationbox
+        \newbox\Wrappedvisiblespacebox
+        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}}
+        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}}
+        \newcommand*\Wrappedcontinuationindent {3ex }
+        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox}
+        % Take advantage of the already applied Pygments mark-up to insert
+        % potential linebreaks for TeX processing.
+        %        {, <, #, %, $, ' and ": go to next line.
+        %        _, }, ^, &, >, - and ~: stay at end of broken line.
+        % Use of \textquotesingle for straight quote.
+        \newcommand*\Wrappedbreaksatspecials {%
+            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}%
+            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}%
+            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}%
+            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}%
+            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}%
+            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}%
+            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}%
+            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}%
+            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}%
+            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}%
+            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}%
+            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}%
+            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}%
+            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}%
+        }
+        % Some characters . , ; ? ! / are not pygmentized.
+        % This macro makes them "active" and they will insert potential linebreaks
+        \newcommand*\Wrappedbreaksatpunct {%
+            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}%
+            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}%
+            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}%
+            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}%
+            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}%
+            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}%
+            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}%
+            \catcode`\.\active
+            \catcode`\,\active
+            \catcode`\;\active
+            \catcode`\:\active
+            \catcode`\?\active
+            \catcode`\!\active
+            \catcode`\/\active
+            \lccode`\~`\~
+        }
+    \makeatother
+
+    \let\OriginalVerbatim=\Verbatim
+    \makeatletter
+    \renewcommand{\Verbatim}[1][1]{%
+        %\parskip\z@skip
+        \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
+        \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
+        \def\FancyVerbFormatLine ##1{\hsize\linewidth
+            \vtop{\raggedright\hyphenpenalty\z@\exhyphenpenalty\z@
+                \doublehyphendemerits\z@\finalhyphendemerits\z@
+                \strut ##1\strut}%
+        }%
+        % If the linebreak is at a space, the latter will be displayed as visible
+        % space at end of first line, and a continuation symbol starts next line.
+        % Stretch/shrink are however usually zero for typewriter font.
+        \def\FV@Space {%
+            \nobreak\hskip\z@ plus\fontdimen3\font minus\fontdimen4\font
+            \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
+            {\kern\fontdimen2\font}%
+        }%
+
+        % Allow breaks at special characters using \PYG... macros.
+        \Wrappedbreaksatspecials
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active
+        \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct]%
+    }
+    \makeatother
+
+    % Exact colors from NB
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+
+    % prompt
+    \makeatletter
+    \newcommand{\boxspacing}{\kern\kvtcb@left@rule\kern\kvtcb@boxsep}
+    \makeatother
+    \newcommand{\prompt}[4]{
+        {\ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-\baselineskip}}
+    }
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+\begin{document}
+    
+    \maketitle
+    
+    
+
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{pip} install mlxtend
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Requirement already satisfied: mlxtend in d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-
+packages (0.22.0)
+Requirement already satisfied: scipy>=1.2.1 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from mlxtend) (1.9.3)
+Requirement already satisfied: numpy>=1.16.2 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from mlxtend) (1.24.2)
+Requirement already satisfied: pandas>=0.24.2 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from mlxtend) (1.5.2)
+Requirement already satisfied: scikit-learn>=1.0.2 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from mlxtend) (1.2.2)
+Requirement already satisfied: matplotlib>=3.0.0 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from mlxtend) (3.6.2)
+Requirement already satisfied: joblib>=0.13.2 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from mlxtend) (1.2.0)
+Requirement already satisfied: setuptools in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from mlxtend) (56.0.0)
+Requirement already satisfied: contourpy>=1.0.1 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from matplotlib>=3.0.0->mlxtend)
+(1.0.6)
+Requirement already satisfied: cycler>=0.10 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from matplotlib>=3.0.0->mlxtend)
+(0.11.0)
+Requirement already satisfied: fonttools>=4.22.0 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from matplotlib>=3.0.0->mlxtend)
+(4.38.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from matplotlib>=3.0.0->mlxtend)
+(1.4.4)
+Requirement already satisfied: packaging>=20.0 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from matplotlib>=3.0.0->mlxtend)
+(22.0)
+Requirement already satisfied: pillow>=6.2.0 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from matplotlib>=3.0.0->mlxtend)
+(9.3.0)
+Requirement already satisfied: pyparsing>=2.2.1 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from matplotlib>=3.0.0->mlxtend)
+(3.0.9)
+Requirement already satisfied: python-dateutil>=2.7 in c:\textbackslash{}users\textbackslash{}abdellatif-
+kbr\textbackslash{}appdata\textbackslash{}roaming\textbackslash{}python\textbackslash{}python39\textbackslash{}site-packages (from
+matplotlib>=3.0.0->mlxtend) (2.8.2)
+Requirement already satisfied: pytz>=2020.1 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from pandas>=0.24.2->mlxtend)
+(2022.7)
+Requirement already satisfied: threadpoolctl>=2.0.0 in
+d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-packages (from scikit-
+learn>=1.0.2->mlxtend) (3.1.0)
+Requirement already satisfied: six>=1.5 in d:\textbackslash{}programmes\textbackslash{}coding\textbackslash{}python\textbackslash{}lib\textbackslash{}site-
+packages (from python-dateutil>=2.7->matplotlib>=3.0.0->mlxtend) (1.16.0)
+Note: you may need to restart the kernel to use updated packages.
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Data/data.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                 \PY{n}{header}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,}
+                 \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{unicode\PYZus{}escape}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                 \PY{n}{dtype}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CustomerID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{str}\PY{p}{,}
+                        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{InvoiceID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{str}\PY{p}{\PYZcb{}}\PY{p}{,}
+                 \PY{n}{parse\PYZus{}dates}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{InvoiceDate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                 \PY{n}{infer\PYZus{}datetime\PYZus{}format}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+  InvoiceNo StockCode                          Description  Quantity  \textbackslash{}
+0    536365    85123A   WHITE HANGING HEART T-LIGHT HOLDER         6
+1    536365     71053                  WHITE METAL LANTERN         6
+2    536365    84406B       CREAM CUPID HEARTS COAT HANGER         8
+3    536365    84029G  KNITTED UNION FLAG HOT WATER BOTTLE         6
+4    536365    84029E       RED WOOLLY HOTTIE WHITE HEART.         6
+
+          InvoiceDate  UnitPrice CustomerID         Country
+0 2010-12-01 08:26:00       2.55      17850  United Kingdom
+1 2010-12-01 08:26:00       3.39      17850  United Kingdom
+2 2010-12-01 08:26:00       2.75      17850  United Kingdom
+3 2010-12-01 08:26:00       3.39      17850  United Kingdom
+4 2010-12-01 08:26:00       3.39      17850  United Kingdom
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \hypertarget{reducing-the-size-of-the-data-set}{%
+\section{Reducing the size of the data
+set}\label{reducing-the-size-of-the-data-set}}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{4}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{sampleData} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{sample}\PY{p}{(}\PY{n}{frac}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{)}
+
+\PY{n}{sampleData}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{4}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+       InvoiceNo StockCode                          Description  Quantity  \textbackslash{}
+540158    581469     21704              BAG 250g SWIRLY MARBLES         1
+319226    564843     22878        NUMBER TILE COTTAGE GARDEN No         1
+372177    569234     23080             RED METAL BOX TOP SECRET         1
+367930    568912     23275     SET OF 3 HANGING OWLS OLLIE BEAK        12
+215566    555722    85131B  BEADED CRYSTAL HEART GREEN ON STICK         1
+{\ldots}          {\ldots}       {\ldots}                                  {\ldots}       {\ldots}
+139094    548289     22917                 HERB MARKER ROSEMARY        12
+539212    581439     23340         VINTAGE CHRISTMAS CAKE FRILL         1
+499974    578703     20931               BLUE POT PLANT CANDLE          2
+424994    573300     22905            CALENDAR IN SEASON DESIGN         2
+375992    569491     22551             PLASTERS IN TIN SPACEBOY         5
+
+               InvoiceDate  UnitPrice CustomerID         Country
+540158 2011-12-08 19:28:00       0.85      14606  United Kingdom
+319226 2011-08-30 14:09:00       2.10      15866  United Kingdom
+372177 2011-10-02 15:33:00       8.25      17841  United Kingdom
+367930 2011-09-29 13:45:00       1.25      17528  United Kingdom
+215566 2011-06-06 16:06:00       0.83        NaN  United Kingdom
+{\ldots}                    {\ldots}        {\ldots}        {\ldots}             {\ldots}
+139094 2011-03-30 11:48:00       0.65      13988  United Kingdom
+539212 2011-12-08 16:30:00       3.29        NaN  United Kingdom
+499974 2011-11-25 11:02:00       2.95      17385  United Kingdom
+424994 2011-10-28 16:10:00       2.95      16049  United Kingdom
+375992 2011-10-04 13:25:00       1.65      14056  United Kingdom
+
+[162573 rows x 8 columns]
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{5}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{mbAnalysis} \PY{o}{=} \PY{n}{sampleData}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CustomerID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{InvoiceDate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Description}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}
+\PY{n}{mbAnalysis}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{5}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+       CustomerID         InvoiceDate                          Description
+540158      14606 2011-12-08 19:28:00              BAG 250g SWIRLY MARBLES
+319226      15866 2011-08-30 14:09:00        NUMBER TILE COTTAGE GARDEN No
+372177      17841 2011-10-02 15:33:00             RED METAL BOX TOP SECRET
+367930      17528 2011-09-29 13:45:00     SET OF 3 HANGING OWLS OLLIE BEAK
+215566        NaN 2011-06-06 16:06:00  BEADED CRYSTAL HEART GREEN ON STICK
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{mbAnalysis}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{single\PYZus{}transaction}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CustomerID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{astype}\PY{p}{(}
+    \PY{n+nb}{str}\PY{p}{)} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZus{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{InvoiceDate}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{str}\PY{p}{)}\PY{o}{.}\PY{n}{str}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{str}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+
+\PY{n}{mbAnalysis}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+C:\textbackslash{}Users\textbackslash{}ABDELL\textasciitilde{}1\textbackslash{}AppData\textbackslash{}Local\textbackslash{}Temp/ipykernel\_3424/2271649286.py:1:
+SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row\_indexer,col\_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-
+docs/stable/user\_guide/indexing.html\#returning-a-view-versus-a-copy
+  mbAnalysis['single\_transaction'] = df['CustomerID'].astype(
+    \end{Verbatim}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+       CustomerID         InvoiceDate                          Description  \textbackslash{}
+540158      14606 2011-12-08 19:28:00              BAG 250g SWIRLY MARBLES
+319226      15866 2011-08-30 14:09:00        NUMBER TILE COTTAGE GARDEN No
+372177      17841 2011-10-02 15:33:00             RED METAL BOX TOP SECRET
+367930      17528 2011-09-29 13:45:00     SET OF 3 HANGING OWLS OLLIE BEAK
+215566        NaN 2011-06-06 16:06:00  BEADED CRYSTAL HEART GREEN ON STICK
+
+       single\_transaction
+540158   14606\_2011-12-08
+319226   15866\_2011-08-30
+372177   17841\_2011-10-02
+367930   17528\_2011-09-29
+215566     nan\_2011-06-06
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{df2} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{mbAnalysis}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{single\PYZus{}transaction}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                  \PY{n}{mbAnalysis}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Description}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\PY{n}{df2}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+Description          4 PURPLE FLOCK DINNER CANDLES  \textbackslash{}
+single\_transaction
+12346\_2011-01-18                                 0
+12347\_2010-12-07                                 0
+12347\_2011-01-26                                 0
+12347\_2011-04-07                                 0
+12347\_2011-06-09                                 0
+
+Description          50'S CHRISTMAS GIFT BAG LARGE   DOLLY GIRL BEAKER  \textbackslash{}
+single\_transaction
+12346\_2011-01-18                                 0                   0
+12347\_2010-12-07                                 0                   0
+12347\_2011-01-26                                 0                   0
+12347\_2011-04-07                                 0                   0
+12347\_2011-06-09                                 0                   0
+
+Description          I LOVE LONDON MINI BACKPACK  \textbackslash{}
+single\_transaction
+12346\_2011-01-18                               0
+12347\_2010-12-07                               0
+12347\_2011-01-26                               0
+12347\_2011-04-07                               0
+12347\_2011-06-09                               0
+
+Description          I LOVE LONDON MINI RUCKSACK   NINE DRAWER OFFICE TIDY  \textbackslash{}
+single\_transaction
+12346\_2011-01-18                               0                         0
+12347\_2010-12-07                               0                         0
+12347\_2011-01-26                               0                         0
+12347\_2011-04-07                               0                         0
+12347\_2011-06-09                               0                         0
+
+Description          OVAL WALL MIRROR DIAMANTE    RED SPOT GIFT BAG LARGE  \textbackslash{}
+single\_transaction
+12346\_2011-01-18                              0                         0
+12347\_2010-12-07                              0                         0
+12347\_2011-01-26                              0                         0
+12347\_2011-04-07                              0                         0
+12347\_2011-06-09                              0                         0
+
+Description          SET 2 TEA TOWELS I LOVE LONDON    SPACEBOY BABY GIFT SET  \textbackslash{}
+single\_transaction
+12346\_2011-01-18                                   0                        0
+12347\_2010-12-07                                   0                        0
+12347\_2011-01-26                                   0                        0
+12347\_2011-04-07                                   0                        0
+12347\_2011-06-09                                   0                        0
+
+Description         {\ldots}  water damaged  website fixed  wet damaged  \textbackslash{}
+single\_transaction  {\ldots}
+12346\_2011-01-18    {\ldots}              0              0            0
+12347\_2010-12-07    {\ldots}              0              0            0
+12347\_2011-01-26    {\ldots}              0              0            0
+12347\_2011-04-07    {\ldots}              0              0            0
+12347\_2011-06-09    {\ldots}              0              0            0
+
+Description         wet pallet  wet rusty  wet/rusty  wet?  wrong barcode  \textbackslash{}
+single\_transaction
+12346\_2011-01-18             0          0          0     0              0
+12347\_2010-12-07             0          0          0     0              0
+12347\_2011-01-26             0          0          0     0              0
+12347\_2011-04-07             0          0          0     0              0
+12347\_2011-06-09             0          0          0     0              0
+
+Description         wrong barcode (22467)  wrongly marked 23343
+single\_transaction
+12346\_2011-01-18                        0                     0
+12347\_2010-12-07                        0                     0
+12347\_2011-01-26                        0                     0
+12347\_2011-04-07                        0                     0
+12347\_2011-06-09                        0                     0
+
+[5 rows x 3840 columns]
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{8}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{encode}\PY{p}{(}\PY{n}{item\PYZus{}freq}\PY{p}{)}\PY{p}{:}
+    \PY{n}{res} \PY{o}{=} \PY{l+m+mi}{0}
+    \PY{k}{if} \PY{n}{item\PYZus{}freq} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{:}
+        \PY{n}{res} \PY{o}{=} \PY{l+m+mi}{1}
+    \PY{k}{return} \PY{n}{res}
+
+
+\PY{n}{basket\PYZus{}input} \PY{o}{=} \PY{n}{df2}\PY{o}{.}\PY{n}{applymap}\PY{p}{(}\PY{n}{encode}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{16}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{sample\PYZus{}train} \PY{o}{=}  \PY{n}{basket\PYZus{}input}\PY{o}{.}\PY{n}{sample}\PY{p}{(}\PY{n}{frac}\PY{o}{=}\PY{l+m+mf}{0.35}\PY{p}{,}\PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{42}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{17}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{mlxtend}\PY{n+nn}{.}\PY{n+nn}{frequent\PYZus{}patterns} \PY{k+kn}{import} \PY{n}{apriori}
+\PY{k+kn}{from} \PY{n+nn}{mlxtend}\PY{n+nn}{.}\PY{n+nn}{frequent\PYZus{}patterns} \PY{k+kn}{import} \PY{n}{association\PYZus{}rules}
+
+\PY{n}{frequent\PYZus{}itemsets} \PY{o}{=} \PY{n}{apriori}\PY{p}{(}\PY{n}{sample\PYZus{}train}\PY{p}{,}
+                            \PY{n}{min\PYZus{}support}\PY{o}{=}\PY{l+m+mf}{0.005}\PY{p}{,}
+                            \PY{n}{use\PYZus{}colnames}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+
+\PY{n}{rules} \PY{o}{=} \PY{n}{association\PYZus{}rules}\PY{p}{(}\PY{n}{frequent\PYZus{}itemsets}\PY{p}{,} \PY{n}{metric}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lift}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+
+\PY{n}{rules}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+d:\textbackslash{}Programmes\textbackslash{}Coding\textbackslash{}Python\textbackslash{}lib\textbackslash{}site-
+packages\textbackslash{}mlxtend\textbackslash{}frequent\_patterns\textbackslash{}fpcommon.py:110: DeprecationWarning:
+DataFrames with non-bool types result in worse computationalperformance and
+their support might be discontinued in the future.Please use a DataFrame with
+bool type
+  warnings.warn(
+    \end{Verbatim}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{17}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+                           antecedents                         consequents  \textbackslash{}
+0            (JUMBO BAG RED RETROSPOT)                    (DOTCOM POSTAGE)
+1                     (DOTCOM POSTAGE)           (JUMBO BAG RED RETROSPOT)
+2   (ROSES REGENCY TEACUP AND SAUCER )   (GREEN REGENCY TEACUP AND SAUCER)
+3    (GREEN REGENCY TEACUP AND SAUCER)  (ROSES REGENCY TEACUP AND SAUCER )
+4            (JUMBO BAG RED RETROSPOT)           (JUMBO BAG PINK POLKADOT)
+5            (JUMBO BAG PINK POLKADOT)           (JUMBO BAG RED RETROSPOT)
+6            (JUMBO BAG RED RETROSPOT)            (JUMBO STORAGE BAG SUKI)
+7             (JUMBO STORAGE BAG SUKI)           (JUMBO BAG RED RETROSPOT)
+8            (LUNCH BAG RED RETROSPOT)           (JUMBO BAG RED RETROSPOT)
+9            (JUMBO BAG RED RETROSPOT)           (LUNCH BAG RED RETROSPOT)
+10           (JUMBO BAG RED RETROSPOT)   (PACK OF 72 RETROSPOT CAKE CASES)
+11   (PACK OF 72 RETROSPOT CAKE CASES)           (JUMBO BAG RED RETROSPOT)
+
+    antecedent support  consequent support   support  confidence       lift  \textbackslash{}
+0             0.040924            0.009509  0.005094    0.124481  13.090545
+1             0.009509            0.040924  0.005094    0.535714  13.090545
+2             0.021056            0.019528  0.006283    0.298387  15.280014
+3             0.019528            0.021056  0.006283    0.321739  15.280014
+4             0.040924            0.024283  0.007132    0.174274   7.176914
+5             0.024283            0.040924  0.007132    0.293706   7.176914
+6             0.040924            0.022584  0.006113    0.149378   6.614170
+7             0.022584            0.040924  0.006113    0.270677   6.614170
+8             0.028188            0.040924  0.005434    0.192771   4.710493
+9             0.040924            0.028188  0.005434    0.132780   4.710493
+10            0.040924            0.022924  0.005094    0.124481   5.430152
+11            0.022924            0.040924  0.005094    0.222222   5.430152
+
+    leverage  conviction  zhangs\_metric
+0   0.004705    1.131319       0.963019
+1   0.004705    2.065703       0.932476
+2   0.005872    1.397454       0.954656
+3   0.005872    1.443315       0.953168
+4   0.006138    1.181648       0.897389
+5   0.006138    1.357900       0.882084
+6   0.005189    1.149059       0.885028
+7   0.005189    1.315022       0.868422
+8   0.004280    1.188109       0.810556
+9   0.004280    1.120606       0.821319
+10  0.004156    1.115997       0.850655
+11  0.004156    1.233098       0.834984
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{19}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{rules}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{support}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{confidence}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lift}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{,}\PY{n}{axis} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{ascending} \PY{o}{=} \PY{k+kc}{False}\PY{p}{)}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{19}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+                          antecedents                         consequents  \textbackslash{}
+5           (JUMBO BAG PINK POLKADOT)           (JUMBO BAG RED RETROSPOT)
+4           (JUMBO BAG RED RETROSPOT)           (JUMBO BAG PINK POLKADOT)
+3   (GREEN REGENCY TEACUP AND SAUCER)  (ROSES REGENCY TEACUP AND SAUCER )
+2  (ROSES REGENCY TEACUP AND SAUCER )   (GREEN REGENCY TEACUP AND SAUCER)
+7            (JUMBO STORAGE BAG SUKI)           (JUMBO BAG RED RETROSPOT)
+6           (JUMBO BAG RED RETROSPOT)            (JUMBO STORAGE BAG SUKI)
+8           (LUNCH BAG RED RETROSPOT)           (JUMBO BAG RED RETROSPOT)
+9           (JUMBO BAG RED RETROSPOT)           (LUNCH BAG RED RETROSPOT)
+
+   antecedent support  consequent support   support  confidence       lift  \textbackslash{}
+5            0.024283            0.040924  0.007132    0.293706   7.176914
+4            0.040924            0.024283  0.007132    0.174274   7.176914
+3            0.019528            0.021056  0.006283    0.321739  15.280014
+2            0.021056            0.019528  0.006283    0.298387  15.280014
+7            0.022584            0.040924  0.006113    0.270677   6.614170
+6            0.040924            0.022584  0.006113    0.149378   6.614170
+8            0.028188            0.040924  0.005434    0.192771   4.710493
+9            0.040924            0.028188  0.005434    0.132780   4.710493
+
+   leverage  conviction  zhangs\_metric
+5  0.006138    1.357900       0.882084
+4  0.006138    1.181648       0.897389
+3  0.005872    1.443315       0.953168
+2  0.005872    1.397454       0.954656
+7  0.005189    1.315022       0.868422
+6  0.005189    1.149059       0.885028
+8  0.004280    1.188109       0.810556
+9  0.004280    1.120606       0.821319
+\end{Verbatim}
+\end{tcolorbox}
+        
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+\end{document}
