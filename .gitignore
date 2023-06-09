@@ -1,5 +1,6 @@
 Data/input/
 Data/output/
+ignored/*
 *.aux
 *.fdb_latexmk
 *.gz
